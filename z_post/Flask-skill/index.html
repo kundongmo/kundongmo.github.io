@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="googlea31bfe60691413ce.html">
+
+
+
+  <meta name="msvalidate.01" content="EFB4743A8043B89CDDB2BE8A586D35F8">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Flask,Python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="作为著名Python web框架之一的Flask，具有简单轻量、灵活、扩展丰富且上手难度低的特点，因此成为了机器学习和深度学习模型上线跑定时任务，提供API的首选框架。众所周知，Flask默认不支持非阻塞IO的，当请求A还未完成时候，请求B需要等待请求A完成后才能被处理，所以效率非常低。但是线上任务通常需要异步、高并发等需求，本文总结一些在日常使用过程中所常用的技巧。  一、前沿 异步和多线">
+<meta name="keywords" content="Flask,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask的异步及多线程">
+<meta property="og:url" content="https://mokundong.cn/z_post/Flask-skill/index.html">
+<meta property="og:site_name" content="便利贴回收站">
+<meta property="og:description" content="作为著名Python web框架之一的Flask，具有简单轻量、灵活、扩展丰富且上手难度低的特点，因此成为了机器学习和深度学习模型上线跑定时任务，提供API的首选框架。众所周知，Flask默认不支持非阻塞IO的，当请求A还未完成时候，请求B需要等待请求A完成后才能被处理，所以效率非常低。但是线上任务通常需要异步、高并发等需求，本文总结一些在日常使用过程中所常用的技巧。  一、前沿 异步和多线">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-12T04:53:58.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flask的异步及多线程">
+<meta name="twitter:description" content="作为著名Python web框架之一的Flask，具有简单轻量、灵活、扩展丰富且上手难度低的特点，因此成为了机器学习和深度学习模型上线跑定时任务，提供API的首选框架。众所周知，Flask默认不支持非阻塞IO的，当请求A还未完成时候，请求B需要等待请求A完成后才能被处理，所以效率非常低。但是线上任务通常需要异步、高并发等需求，本文总结一些在日常使用过程中所常用的技巧。  一、前沿 异步和多线">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mokundong.cn/z_post/Flask-skill/">
+
+
+
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章访问密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <title>Flask的异步及多线程 | 便利贴回收站</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '1407b8e2b7295264fd6d4255f7c4ace6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1407b8e2b7295264fd6d4255f7c4ace6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">便利贴回收站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mokundong.cn/z_post/Flask-skill/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小白">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatarmo.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="便利贴回收站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flask的异步及多线程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T12:00:00+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/skill/" itemprop="url" rel="index">
+                    <span itemprop="name">skill</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/z_post/Flask-skill/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/z_post/Flask-skill/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+           
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p> 作为著名Python web框架之一的Flask，具有简单轻量、灵活、扩展丰富且上手难度低的特点，因此成为了机器学习和深度学习模型上线跑定时任务，提供API的首选框架。<br>众所周知，Flask默认不支持<code>非阻塞IO</code>的，当<code>请求A</code>还未完成时候，<code>请求B</code>需要等待<code>请求A</code>完成后才能被处理，所以效率非常低。但是线上任务通常需要异步、高并发等需求，本文总结一些在日常使用过程中所常用的技巧。</p>
+</blockquote>
+<h2 id="一、前沿"><a href="#一、前沿" class="headerlink" title="一、前沿"></a>一、前沿</h2><blockquote>
+<p>异步和多线程有什么区别？其实，异步是目的，而多线程是实现这个目的的方法。异步是说，A发起一个操作后（一般都是比较耗时的操作，如果不耗时的操作就没有必要异步了），可以继续自顾自的处理它自己的事儿，不用干等着这个耗时操作返回。<br>实现异步可以采用多线程技术或则交给另外的进程来处理,详解常见<a href="https://www.cnblogs.com/dream844/archive/2012/06/12/2546083.html" target="_blank" rel="noopener">这里</a>。</p>
+</blockquote>
+<h2 id="二、实现方法"><a href="#二、实现方法" class="headerlink" title="二、实现方法"></a>二、实现方法</h2><ul>
+<li>Flask启动自带方法</li>
+<li><p>采用gunicorn部署</p>
+<h3 id="1、Flask中自带方法实现"><a href="#1、Flask中自带方法实现" class="headerlink" title="1、Flask中自带方法实现"></a>1、Flask中自带方法实现</h3><blockquote>
+<p>run.py  </p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
+<span class="comment"># -*- coding: utf-8 -*-  </span>
+<span class="comment"># @Time    : 2018-12-01 16:37  </span>
+<span class="comment"># @Author  : mokundong  </span>
+<span class="keyword">from</span> flask <span class="keyword">import</span> Flask  
+<span class="keyword">import</span> socket  
+<span class="keyword">from</span> time <span class="keyword">import</span> sleep  
+
+myhost = socket.gethostbyname(socket.gethostname())  
+app = Flask(__name__)  
+
+<span class="meta">@app.route('/job1')  </span>
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>  
+    print(<span class="string">"Task #1 started!"</span>)  
+    sleep(<span class="number">10</span>)  
+    print(<span class="string">"Task #1 is done!"</span>)  
+
+<span class="meta">@app.route('/job2')  </span>
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>  
+    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
+    sleep(<span class="number">5</span>)  
+    print(<span class="string">"Task #2 is done!"</span>)  
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  
+    app.run(host=myhost,port=<span class="number">5000</span>,threaded=<span class="keyword">True</span>)  
+</code></pre>
+<p><code>app.run(host=xxx,port=xx,threaded=True)</code><br>中threaded开启后则不需要等队列。 </p>
+<h3 id="2、gunicorn部署"><a href="#2、gunicorn部署" class="headerlink" title="2、gunicorn部署"></a>2、gunicorn部署</h3><blockquote>
+<p>Gunicorn 是一个高效的Python WSGI Server,通常用它来运行 wsgi application 或者 wsgi framework(如Django,Paster,Flask),地位相当于Java中的Tomcat。gunicorn 会启动一组 worker进程，所有worker进程公用一组listener，在每个worker中为每个listener建立一个wsgi server。每当有HTTP链接到来时，wsgi server创建一个协程来处理该链接，协程处理该链接的时候，先初始化WSGI环境，然后调用用户提供的app对象去处理HTTP请求。<br>关于gunicorn的详细说明，可以参考<a href="https://gunicorn.org/" target="_blank" rel="noopener">这里</a>。  </p>
+</blockquote>
+<blockquote>
+<p>使用命令行启动gunicorn有两种方式获取配置项，一种是在命令行配置，一种是在配置文件中获取。 </p>
+</blockquote>
+<blockquote>
+<p>run.py  </p>
+</blockquote>
+<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
+<span class="comment"># -*- coding: utf-8 -*-  </span>
+<span class="comment"># @Time    : 2018-12-01 17:00  </span>
+<span class="comment"># @Author  : mokundong  </span>
+<span class="keyword">from</span> flask <span class="keyword">import</span> Flask  
+<span class="keyword">from</span> time <span class="keyword">import</span> sleep  
+
+app = Flask(__name__)  
+
+<span class="meta">@app.route('/job1')  </span>
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>  
+    print(<span class="string">"Task #1 started!"</span>)  
+    sleep(<span class="number">10</span>)  
+    print(<span class="string">"Task #1 is done!"</span>)  
+
+<span class="meta">@app.route('/job2')  </span>
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>  
+    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
+    sleep(<span class="number">5</span>)  
+    print(<span class="string">"Task #2 is done!"</span>)  
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  
+    app.run()  
+</code></pre>
+<h4 id="命令行配置"><a href="#命令行配置" class="headerlink" title="命令行配置"></a>命令行配置</h4><pre><code class="bash">gunicorn --workers=4 --<span class="built_in">bind</span>=127.0.0.1:8000 run:app
+</code></pre>
+<p>更多配置见官网  </p>
+<h4 id="配置文件获取配置"><a href="#配置文件获取配置" class="headerlink" title="配置文件获取配置"></a>配置文件获取配置</h4><blockquote>
+<p>gunicorn_config.py  </p>
+</blockquote>
+<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
+<span class="comment"># -*- coding: utf-8 -*-  </span>
+<span class="comment"># @Time    : 2018-12-01 17:10  </span>
+<span class="comment"># @Author  : mokundong  </span>
+<span class="keyword">import</span> os
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> multiprocessing
+<span class="keyword">import</span> gevent.monkey
+
+gevent.monkey.patch_all()
+myhost = socket.gethostbyname(socket.gethostname())  
+
+debug = <span class="keyword">False</span>
+loglevel = <span class="string">'info'</span>
+hosts = get_host_ip()
+bind = hosts+<span class="string">":5000"</span>
+timeout = <span class="number">30</span>      <span class="comment">#超时</span>
+
+pidfile = <span class="string">"log/gunicorn.pid"</span>
+accesslog = <span class="string">"log/access.log"</span>
+errorlog = <span class="string">"log/debug.log"</span>
+
+daemon = <span class="keyword">True</span> <span class="comment">#意味着开启后台运行，默认为False</span>
+workers = <span class="number">4</span> <span class="comment"># 启动的进程数</span>
+threads = <span class="number">2</span> <span class="comment">#指定每个进程开启的线程数</span>
+worker_class = <span class="string">'gevent'</span> <span class="comment">#默认为sync模式，也可使用gevent模式。</span>
+x_forwarded_for_header = <span class="string">'X-FORWARDED-FOR'</span>
+</code></pre>
+<blockquote>
+<p>启动命令如下 </p>
+<pre><code class="bash">gunicorn -c gunicorn_config.py run:app
+</code></pre>
+</blockquote>
+<h2 id="三、补充"><a href="#三、补充" class="headerlink" title="三、补充"></a>三、补充</h2><h3 id="1、关于线程的补充"><a href="#1、关于线程的补充" class="headerlink" title="1、关于线程的补充"></a>1、关于线程的补充</h3><blockquote>
+<p>在工作中我还遇到一种情况，当一个请求过来后，我需要两种回应，一个是及时返回app运行结果，第二个响应是保存数据到日志或者数据库。往往我们在写数据的过程中会花销一定的时间，导致结果返回会有所延迟，因此我们需要用两个线程处理这两个任务，那么我们如下处理。</p>
+</blockquote>
+<blockquote>
+<p>run.py  </p>
+</blockquote>
+<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
+<span class="comment"># -*- coding: utf-8 -*-  </span>
+<span class="comment"># @Time    : 2018-12-01 17:20  </span>
+<span class="comment"># @Author  : mokundong</span>
+<span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request
+<span class="keyword">from</span> time <span class="keyword">import</span> sleep
+<span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor
+executor = ThreadPoolExecutor(<span class="number">2</span>)
+app = Flask(__name__)
+
+<span class="meta">@app.route('/job')</span>
+<span class="function"><span class="keyword">def</span> <span class="title">run_jobs</span><span class="params">()</span>:</span>
+    executor.submit(some_long_task1)
+    executor.submit(some_long_task2, <span class="string">'hello'</span>, <span class="number">123</span>)
+    <span class="keyword">return</span> <span class="string">'Two jobs was launched in background!'</span>
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>
+    print(<span class="string">"Task #1 started!"</span>)
+    sleep(<span class="number">10</span>)
+    print(<span class="string">"Task #1 is done!"</span>)
+
+<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>
+    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
+    sleep(<span class="number">5</span>)
+    print(<span class="string">"Task #2 is done!"</span>)
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    app.run()
+</code></pre>
+<h3 id="2、关于获取IP的补充"><a href="#2、关于获取IP的补充" class="headerlink" title="2、关于获取IP的补充"></a>2、关于获取IP的补充</h3><blockquote>
+<p>上述代码中通过获取<code>hostname</code>，然后再通过<code>hostname</code>反查处机器的IP。这个方法是不推荐的。因为很多的机器没有规范这个<code>hostname</code>的设置。<br>另外就是有些服务器会在 <code>/etc/hosts</code> 中添加本机的<code>hostname</code>的地址，这个做法也不是不可以，但是如果设置成了 <code>127.0.0.1</code>，那么获取出来的IP就都是这个地址了。<br>这里给出一种优雅的方式获取IP，利用 UDP 协议来实现的，生成一个UDP包，把自己的 IP 放如到 UDP 协议头中，然后从UDP包中获取本机的IP。</p>
+</blockquote>
+<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
+<span class="comment"># -*- coding: utf-8 -*-  </span>
+<span class="comment"># @Time    : 2018-12-01 17:30  </span>
+<span class="comment"># @Author  : mokundong</span>
+<span class="comment"># 可以封装成函数，方便 Python 的程序调用</span>
+<span class="keyword">import</span> socket
+
+<span class="function"><span class="keyword">def</span> <span class="title">get_host_ip</span><span class="params">()</span>:</span>
+    <span class="keyword">try</span>:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect((<span class="string">'8.8.8.8'</span>, <span class="number">80</span>))
+        ip = s.getsockname()[<span class="number">0</span>]
+    <span class="keyword">finally</span>:
+        s.close()
+
+    <span class="keyword">return</span> ip
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当然推荐使用gunicorn部署多线程，Flask自带的，emmmm，测试玩儿玩儿吧。<br>在写作过程中才发现自己知识漏洞不是一般多，共勉！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatMP.jpg" alt="小白 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎扫描二维码加微信交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mkd
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://mokundong.cn/z_post/Flask-skill/" title="Flask的异步及多线程">https://mokundong.cn/z_post/Flask-skill/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag"># Flask</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/z_post/annua-summary/" rel="prev" title="What I have done this year">
+                What I have done this year <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatarmo.gif" alt="小白">
+            
+              <p class="site-author-name" itemprop="name">小白</p>
+              <p class="site-description motion-element" itemprop="description">happy learning,learn to happy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mokundong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mokundong@sina.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前沿"><span class="nav-number">1.</span> <span class="nav-text">一、前沿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实现方法"><span class="nav-number">2.</span> <span class="nav-text">二、实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Flask中自带方法实现"><span class="nav-number">2.1.</span> <span class="nav-text">1、Flask中自带方法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、gunicorn部署"><span class="nav-number">2.2.</span> <span class="nav-text">2、gunicorn部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行配置"><span class="nav-number">2.2.1.</span> <span class="nav-text">命令行配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件获取配置"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置文件获取配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、补充"><span class="nav-number">3.</span> <span class="nav-text">三、补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、关于线程的补充"><span class="nav-number">3.1.</span> <span class="nav-text">1、关于线程的补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、关于获取IP的补充"><span class="nav-number">3.2.</span> <span class="nav-text">2、关于获取IP的补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小白</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'mokundong',
+            repo: '',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '',
+            
+                client_id: 'mokundong'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'k2jryCKebyIFG5QP265nkbGx-gzGzoHsz',
+        appKey: '1oAHHnAn7UIyTOf2PuEOd5fT',
+        placeholder: 'Just go go',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

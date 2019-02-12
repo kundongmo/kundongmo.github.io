@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[文本相似度计算]]></title>
+    <url>%2Fz_post%2Ftextsanddocs-filter%2F</url>
+    <content type="text"><![CDATA[在网页点击、推荐等众多NLP任务中，常常需要用到文本去重或者相似计算。本文介绍3种常用的方式：shingling、simhash和bloom filter。 一、shingling]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[资源分享]]></title>
+    <url>%2Fz_post%2Fdoc-recommend%2F</url>
+    <content type="text"><![CDATA[推荐两份写的比较好的关于HMM(隐马尔可夫链)和LDA的PDF资料，后续资料持续更新 1、点击下载HMM学习最佳范例 2、点击下载LDA数学八卦 3、点击下载2018DataFun技术分享合集 4、点击下载2018阿里巴巴-数字经济下的算法力量 5、点击下载2018美团点评技术年货ai篇 6、点击下载2018携程技术年度合辑]]></content>
+      <categories>
+        <category>docs</category>
+      </categories>
+      <tags>
+        <tag>docs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[What I have done this year]]></title>
+    <url>%2Fz_post%2Fannua-summary%2F</url>
+    <content type="text"><![CDATA[2018年可谓人生一大转折点，这年中结束了长达二十年的求学生涯摇身一变就要两肩扛砖，为一口吃喝而奔波。前半年忙论文忙答辩除了忙碌还是忙碌，不过心情还是极好的，毕竟对面长达三年身心折磨的结束还是很期待的；忘记与学校分手的第几天起，喜欢一个人…啊，呸，从七月的第一个日出那天起入职培训过渡到项目，渐渐开始融入万千互联网农民工的大军中。 一、源 其实昨天晚上我就在想我是不是也要跟个俗，写一个年度总结，纠结了很久最终还是想着这重要的一年还是要留下点什么吧。我想写写工作吧，学校留下的，大概也只有师兄姐弟妹之间的一些东西了。 二、关于工作 当初还是有那么几个工作机会摆在我面面前的，对于最后的选择我还是满意的，一来我比较喜欢现在组内的工作氛围，大家都比较照顾我；二是能够做我喜欢做的事情，也能学到很多东西；最后也能离家很近，有很多熟悉的朋友都还在。 学习 刚入职场的新人，学习总是重要的环节，不管是专业知识，工程能力还是项目沟通能力等等。 1、刚进公司，我是在数据科学团队的。这边主要做一些研究性质的事情，这段时间我的重心主要是一些理论学习。开始我没有想到这边主要做的是nlp一类的项目，而我在这一块算是比较欠缺的（毕竟我是一个学物理的，找工作的时候又看得比较杂，广而不精），所以很多时候的在看论文、看代码、逛技术博客，那段特别感谢赵xx哥和朱x兄带我。后来DS团队合并到搜索推荐组了，赵哥也走了。 2、说实话刚到搜索这边的时候，我还是比较担心的，毕竟这边工程上的事情很多，而我在这一块可能需要补的东西更多，好在老大家林哥比较照顾我，让我还是继续做之前的东西，也总是替我背锅。但研究项目终究需要工程化应用才能产生价值，这段时间非常感谢凯哥，总是很耐心的指导我一些工程上的流程和细节，总体过得也算顺利。后来朱兄和凯哥也走了。 3、那段时间走了好多人，在学校习惯了身边总是那些熟悉的面孔，突然很不适应这种状况，但后来慢慢的也习惯了。 收获 既然有学习，当然就有收获的啦。这半年我做的一个主要项目是一个与文本分类相关的事情。项目从研究、选模型到落地应用持续了好几个月，与加州大学某分校有合作。 1、在这个项目过程中，理论上学习到了比较多的内容，从CNN到Transform的特征提取方式，从word embeding到BERT框架的预训练框架均有所进一步认识。 2、工程上，成功将基于Python的深度学习模型第一次上线。上线过程中学习了Flask框架；解决线上问题过程中，学习并使用了异步等知识；学会了图数据库neo4J等等。 3、项目方沟通过程中，加强了与业务方的沟通能力，了解业务对模型，对工程的影响。 4、最终，模型成功应用于重要环节，在效果上相比加州大学提高了一倍，这一点我还是很满意的。 不足 自身的不足还是很明显的，特别是以后接触更多的项目，欠下的东西会越发的凸显出来。 1、Java忘记得差不多了，很多工程上的东西还没学。 2、很多基础算法的推导也渐渐模糊了。 3、身上的肉，嗯，好像还是那么多。 三、写在最后 这一年，准确说是半年大概就是这么个情况，有所获有欠缺，来年继续努力，查漏补缺。目前行业的发展有这么一个段子：“2019年可能会是过去十年里最差的一年，但却是未来十年里最好的一年”。革命尚未结束，同志仍需努力，诸君共勉！！ 2018.12.31莫坤东]]></content>
+      <categories>
+        <category>summary</category>
+      </categories>
+      <tags>
+        <tag>summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Flask的异步及多线程]]></title>
+    <url>%2Fz_post%2FFlask-skill%2F</url>
+    <content type="text"><![CDATA[作为著名Python web框架之一的Flask，具有简单轻量、灵活、扩展丰富且上手难度低的特点，因此成为了机器学习和深度学习模型上线跑定时任务，提供API的首选框架。众所周知，Flask默认不支持非阻塞IO的，当请求A还未完成时候，请求B需要等待请求A完成后才能被处理，所以效率非常低。但是线上任务通常需要异步、高并发等需求，本文总结一些在日常使用过程中所常用的技巧。 一、前沿 异步和多线程有什么区别？其实，异步是目的，而多线程是实现这个目的的方法。异步是说，A发起一个操作后（一般都是比较耗时的操作，如果不耗时的操作就没有必要异步了），可以继续自顾自的处理它自己的事儿，不用干等着这个耗时操作返回。实现异步可以采用多线程技术或则交给另外的进程来处理,详解常见这里。 二、实现方法 Flask启动自带方法 采用gunicorn部署 1、Flask中自带方法实现 run.py #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : 2018-12-01 16:37 # @Author : mokundong from flask import Flask import socket from time import sleep myhost = socket.gethostbyname(socket.gethostname()) app = Flask(__name__) @app.route('/job1') def some_long_task1(): print("Task #1 started!") sleep(10) print("Task #1 is done!") @app.route('/job2') def some_long_task2(arg1, arg2): print("Task #2 started with args: %s %s!" % (arg1, arg2)) sleep(5) print("Task #2 is done!") if __name__ == '__main__': app.run(host=myhost,port=5000,threaded=True) app.run(host=xxx,port=xx,threaded=True)中threaded开启后则不需要等队列。 2、gunicorn部署 Gunicorn 是一个高效的Python WSGI Server,通常用它来运行 wsgi application 或者 wsgi framework(如Django,Paster,Flask),地位相当于Java中的Tomcat。gunicorn 会启动一组 worker进程，所有worker进程公用一组listener，在每个worker中为每个listener建立一个wsgi server。每当有HTTP链接到来时，wsgi server创建一个协程来处理该链接，协程处理该链接的时候，先初始化WSGI环境，然后调用用户提供的app对象去处理HTTP请求。关于gunicorn的详细说明，可以参考这里。 使用命令行启动gunicorn有两种方式获取配置项，一种是在命令行配置，一种是在配置文件中获取。 run.py #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : 2018-12-01 17:00 # @Author : mokundong from flask import Flask from time import sleep app = Flask(__name__) @app.route('/job1') def some_long_task1(): print("Task #1 started!") sleep(10) print("Task #1 is done!") @app.route('/job2') def some_long_task2(arg1, arg2): print("Task #2 started with args: %s %s!" % (arg1, arg2)) sleep(5) print("Task #2 is done!") if __name__ == '__main__': app.run() 命令行配置gunicorn --workers=4 --bind=127.0.0.1:8000 run:app 更多配置见官网 配置文件获取配置 gunicorn_config.py #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : 2018-12-01 17:10 # @Author : mokundong import os import socket import multiprocessing import gevent.monkey gevent.monkey.patch_all() myhost = socket.gethostbyname(socket.gethostname()) debug = False loglevel = 'info' hosts = get_host_ip() bind = hosts+":5000" timeout = 30 #超时 pidfile = "log/gunicorn.pid" accesslog = "log/access.log" errorlog = "log/debug.log" daemon = True #意味着开启后台运行，默认为False workers = 4 # 启动的进程数 threads = 2 #指定每个进程开启的线程数 worker_class = 'gevent' #默认为sync模式，也可使用gevent模式。 x_forwarded_for_header = 'X-FORWARDED-FOR' 启动命令如下 gunicorn -c gunicorn_config.py run:app 三、补充1、关于线程的补充 在工作中我还遇到一种情况，当一个请求过来后，我需要两种回应，一个是及时返回app运行结果，第二个响应是保存数据到日志或者数据库。往往我们在写数据的过程中会花销一定的时间，导致结果返回会有所延迟，因此我们需要用两个线程处理这两个任务，那么我们如下处理。 run.py #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : 2018-12-01 17:20 # @Author : mokundong from flask import Flask,request from time import sleep from concurrent.futures import ThreadPoolExecutor executor = ThreadPoolExecutor(2) app = Flask(__name__) @app.route('/job') def run_jobs(): executor.submit(some_long_task1) executor.submit(some_long_task2, 'hello', 123) return 'Two jobs was launched in background!' def some_long_task1(): print("Task #1 started!") sleep(10) print("Task #1 is done!") def some_long_task2(arg1, arg2): print("Task #2 started with args: %s %s!" % (arg1, arg2)) sleep(5) print("Task #2 is done!") if __name__ == '__main__': app.run() 2、关于获取IP的补充 上述代码中通过获取hostname，然后再通过hostname反查处机器的IP。这个方法是不推荐的。因为很多的机器没有规范这个hostname的设置。另外就是有些服务器会在 /etc/hosts 中添加本机的hostname的地址，这个做法也不是不可以，但是如果设置成了 127.0.0.1，那么获取出来的IP就都是这个地址了。这里给出一种优雅的方式获取IP，利用 UDP 协议来实现的，生成一个UDP包，把自己的 IP 放如到 UDP 协议头中，然后从UDP包中获取本机的IP。 #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : 2018-12-01 17:30 # @Author : mokundong # 可以封装成函数，方便 Python 的程序调用 import socket def get_host_ip(): try: s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) s.connect(('8.8.8.8', 80)) ip = s.getsockname()[0] finally: s.close() return ip 总结当然推荐使用gunicorn部署多线程，Flask自带的，emmmm，测试玩儿玩儿吧。在写作过程中才发现自己知识漏洞不是一般多，共勉！]]></content>
+      <categories>
+        <category>skill</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+</search>
