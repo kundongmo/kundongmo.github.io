@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2Fz_post%2Fmoods%2F</url>
+    <content type="text"><![CDATA[title: 心情date: 2019-01-13 11:59:47author: “Mkd”categories: moodstags: moods 2019-02-17 今天很开心 😋]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[文本相似度计算]]></title>
     <url>%2Fz_post%2Ftextsanddocs-filter%2F</url>
     <content type="text"><![CDATA[在网页点击、推荐等众多NLP任务中，常常需要用到文本去重或者相似计算。本文介绍3种常用的方式：shingling、simhash和bloom filter。 一、shingling]]></content>
