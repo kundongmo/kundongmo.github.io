@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[moods]]></title>
     <url>%2Fz_post%2Fmoods%2F</url>
-    <content type="text"><![CDATA[title: 心情date: 2019-02-18 11:59:47author: “Mkd”categories: moodstags: moods 2019-02-17 今天很开心 😋]]></content>
+    <content type="text"><![CDATA[2019-02-17 今天很开心 😋]]></content>
+      <categories>
+        <category>moods</category>
+      </categories>
+      <tags>
+        <tag>moods</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[文本相似度计算]]></title>
