@@ -15,6 +15,12 @@
     <title><![CDATA[文本相似度计算]]></title>
     <url>%2Fz_post%2Ftextsanddocs-filter%2F</url>
     <content type="text"><![CDATA[在网页点击、推荐等众多NLP任务中，常常需要用到文本去重或者相似计算。本文介绍3种常用的方式：shingling、simhash和bloom filter。 一、shingling]]></content>
+      <categories>
+        <category>原理</category>
+      </categories>
+      <tags>
+        <tag>相似度</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[资源分享]]></title>
