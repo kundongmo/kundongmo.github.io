@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[20190924-Part_0—Q-Learning-Agents]]></title>
+    <title><![CDATA[Simple Reinforcement Learning with Tensorflow Part 0 - Q-Learning with Tables and Neural Networks]]></title>
     <url>%2Fz_post%2F20190924-Part-0%E2%80%94Q-Learning-Agents%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic.]]></content>
       <categories>
         <category>Reinforcement Learning</category>
       </categories>
@@ -76,8 +76,8 @@
         <category>skill</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Python</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
