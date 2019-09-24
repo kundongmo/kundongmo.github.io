@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Simple Reinforcement Learning with Tensorflow Part 0 - Q-Learning with Tables and Neural Networks]]></title>
     <url>%2Fz_post%2F20190924-Part-0%E2%80%94Q-Learning-Agents%2F</url>
-    <content type="text"><![CDATA[We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic.]]></content>
+    <content type="text"><![CDATA[在本强化学习系列教程中，]]></content>
       <categories>
         <category>Reinforcement Learning</category>
       </categories>
