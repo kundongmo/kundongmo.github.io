@@ -151,7 +151,8 @@
 <meta property="og:description" content="We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic. 在本强化学习系列教程中，我们将要探讨一系列RL算法称为Q-Learning算法。接下来的三章(Part1-3)介绍的是基于策略的算法，他们之间有一点点差别。我们将从实现一个简">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true">
-<meta property="og:updated_time" content="2019-09-24T15:28:07.767Z">
+<meta property="og:image" content="https://mokundong.cn/Users/mkd/Blog/blog/source/images/RL-0-2.png">
+<meta property="og:updated_time" content="2019-09-25T01:23:52.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simple Reinforcement Learning with Tensorflow Part 0 -  Q-Learning with Tables and Neural Networks">
 <meta name="twitter:description" content="We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic. 在本强化学习系列教程中，我们将要探讨一系列RL算法称为Q-Learning算法。接下来的三章(Part1-3)介绍的是基于策略的算法，他们之间有一点点差别。我们将从实现一个简">
@@ -485,7 +486,9 @@
       
         <script src="/assets/js/APlayer.min.js"> </script><p><img src="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true" alt="We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic."><br>We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic.</p>
 <p>在本强化学习系列教程中，我们将要探讨一系列RL算法称为Q-Learning算法。接下来的三章(Part1-3)介绍的是基于策略的算法，他们之间有一点点差别。我们将从实现一个简单的查询表版本的算法开始，而不是从复杂且笨拙的深度神经网络开始，然后展示如何使用Tensorflow来实现等效的神经网络。考虑到我们要回顾基础知识，最好将其视为本系列的第0部分。希望可以对Q-Learning中真正发生的事情有一个直观的认识，然后当我们最终将策略梯度和Q-learning方法结合起来以构建最佳的RL时，我们可以继续学习。(如果您对Policy Networks更感兴趣，或者已经对Q-Learning有所了解，请随时在<a href="">此处</a>开始教程系列)<br>&nbsp;  </p>
-<p>与策略梯度方法不同，策略梯度方法尝试学习将观察结果直接映射到操作的功能，而Q学习则尝试学习处于给定状态的价值，并在此采取特定的操作</p>
+<p>与策略梯度方法不同，策略梯度方法尝试学习将观察结果直接映射到操作的功能，而Q学习则尝试学习处于给定状态的价值，并在此采取特定的操作。虽然两种方法最终都可以使我们在特定情况下采取明智的行动，但采取该行动的方式却大不相同。您可能听说过可以玩<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html" target="_blank" rel="noopener">Atari游戏的DeepQ网络</a>。我们将在这里讨论的Q学习算法的更大，更复杂的实现。</p>
+<p><strong>表格环境的表格方法</strong> </p>
+<p><img src="/Users/mkd/Blog/blog/source/images/RL-0-2.png" alt=""></p>
 
       
     </div>
