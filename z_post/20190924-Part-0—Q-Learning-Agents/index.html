@@ -131,7 +131,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Python,Reinforcement Learning,Tensorflow,">
 
 
 
@@ -142,19 +142,20 @@
 
 
 
-<meta name="description" content="title: 基于tensorflow的最简单的强化学习入门-part0：Q学习和神经网络date: 2019-09-24 22:39:47author: “ Arthur Juliani”categories:   Reinforcement Learningtags: Python Reinforcement Learning Tensorflow   本文翻译自 Simple Reinfo">
+<meta name="description" content="本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。   We’ll be learning how to solve the OpenAI FrozenLake environment. O">
+<meta name="keywords" content="Python,Reinforcement Learning,Tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="便利贴回收站">
+<meta property="og:title" content="基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络">
 <meta property="og:url" content="https://mokundong.cn/z_post/20190924-Part-0—Q-Learning-Agents/index.html">
 <meta property="og:site_name" content="便利贴回收站">
-<meta property="og:description" content="title: 基于tensorflow的最简单的强化学习入门-part0：Q学习和神经网络date: 2019-09-24 22:39:47author: “ Arthur Juliani”categories:   Reinforcement Learningtags: Python Reinforcement Learning Tensorflow   本文翻译自 Simple Reinfo">
+<meta property="og:description" content="本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。   We’ll be learning how to solve the OpenAI FrozenLake environment. O">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true">
 <meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-2.png?raw=true">
-<meta property="og:updated_time" content="2019-09-25T02:58:46.024Z">
+<meta property="og:updated_time" content="2019-09-25T03:02:08.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="便利贴回收站">
-<meta name="twitter:description" content="title: 基于tensorflow的最简单的强化学习入门-part0：Q学习和神经网络date: 2019-09-24 22:39:47author: “ Arthur Juliani”categories:   Reinforcement Learningtags: Python Reinforcement Learning Tensorflow   本文翻译自 Simple Reinfo">
+<meta name="twitter:title" content="基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络">
+<meta name="twitter:description" content="本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。   We’ll be learning how to solve the OpenAI FrozenLake environment. O">
 <meta name="twitter:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true">
 
 
@@ -203,7 +204,7 @@
         }
     })();
 </script>
-  <title> | 便利贴回收站</title>
+  <title>基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络 | 便利贴回收站</title>
   
 
 
@@ -399,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络</h1>
         
 
         <div class="post-meta">
@@ -421,6 +422,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Reinforcement-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Reinforcement Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -461,14 +484,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>title: 基于tensorflow的最简单的强化学习入门-part0：Q学习和神经网络<br>date: 2019-09-24 22:39:47<br>author: “ Arthur Juliani”<br>categories: </p>
-<ul>
-<li>Reinforcement Learning<br>tags:</li>
-<li>Python</li>
-<li>Reinforcement Learning</li>
-<li>Tensorflow</li>
-</ul>
-<blockquote>
+        <script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，<a href="https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0" target="_blank" rel="noopener">原文链接</a>。 </p>
 </blockquote>
 <p><img src="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true" alt="We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic."><br>We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic.</p>
@@ -503,11 +519,11 @@
         <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>本文作者：</strong>
-    小白
+     Arthur Juliani
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mokundong.cn/z_post/20190924-Part-0—Q-Learning-Agents/" title="">https://mokundong.cn/z_post/20190924-Part-0—Q-Learning-Agents/</a>
+    <a href="https://mokundong.cn/z_post/20190924-Part-0—Q-Learning-Agents/" title="基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络">https://mokundong.cn/z_post/20190924-Part-0—Q-Learning-Agents/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -519,6 +535,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Reinforcement-Learning/" rel="tag"><i class="fa fa-tag"></i> Reinforcement Learning</a>
+          
+            <a href="/tags/Tensorflow/" rel="tag"><i class="fa fa-tag"></i> Tensorflow</a>
+          
+        </div>
       
 
       
@@ -649,7 +675,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -660,7 +686,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

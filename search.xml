@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络]]></title>
     <url>%2Fz_post%2F20190924-Part-0%E2%80%94Q-Learning-Agents%2F</url>
-    <content type="text"><![CDATA[title: 基于tensorflow的最简单的强化学习入门-part0：Q学习和神经网络date: 2019-09-24 22:39:47author: “ Arthur Juliani”categories: Reinforcement Learningtags: Python Reinforcement Learning Tensorflow 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。 We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic. 在本强化学习系列教程中，我们将要探讨一系列称为Q-Learning的增强学习算法。与接下来的三章(Part1-3)介绍的基于策略(policy-base)的增强学习算法有所不同。 我们将从实现一个简单查找表算法开始，然后展示如何使用Tensorflow来实现等效的神经网络。考虑到上述安排，我们需要回顾基础知识，所以将这一篇视为本系列的第0部分。希望通过这个系列的教程，我们在理解Q-learning之后，能够结合policy gradient和Q-learning方法构建更好的增强学习网络。（如果你对策略网络更感兴趣或者你已经有一些Q-learning的经验，那么你可以从这里开始阅读）&nbsp; 策略梯度算法(policy gradient)试着学习某个函数，该函数可以直接把状态(state)映射为动作(action)的概率分布。Q-learning和策略梯度算法不一样，它试着学习在每个状态下对应的值，并且依赖该状态执行某一个动作。虽然两种方法最终都允许我们给定情况下采取特定的行动，但是实现该目的的方法是不相同的。你也许已经听说深度Q-learning可以玩atari游戏，我们将要在这里讨论和实现这些更复杂和强大的Q-learning算法。 Tabular Approaches for Tabular Environment(表格算法) ​ The rules of the FrozenLake environment 在本教程中，我们将要尝试使用OpenAI gym解决FrozenLake问题。OpenAI gym提供了一个简单的环境，使初学者可以在他们提供一系列游戏中尝试他们的方法。比如FrozenLake，该游戏环境包括一个4*4的网络格子，每个格子可以是起始块，目标块、冻结块或者危险块。我们的目标是让Agent学习从开始块到目标快而不陷入危险块。]]></content>
+    <content type="text"><![CDATA[本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。 We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic. 在本强化学习系列教程中，我们将要探讨一系列称为Q-Learning的增强学习算法。与接下来的三章(Part1-3)介绍的基于策略(policy-base)的增强学习算法有所不同。 我们将从实现一个简单查找表算法开始，然后展示如何使用Tensorflow来实现等效的神经网络。考虑到上述安排，我们需要回顾基础知识，所以将这一篇视为本系列的第0部分。希望通过这个系列的教程，我们在理解Q-learning之后，能够结合policy gradient和Q-learning方法构建更好的增强学习网络。（如果你对策略网络更感兴趣或者你已经有一些Q-learning的经验，那么你可以从这里开始阅读）&nbsp; 策略梯度算法(policy gradient)试着学习某个函数，该函数可以直接把状态(state)映射为动作(action)的概率分布。Q-learning和策略梯度算法不一样，它试着学习在每个状态下对应的值，并且依赖该状态执行某一个动作。虽然两种方法最终都允许我们给定情况下采取特定的行动，但是实现该目的的方法是不相同的。你也许已经听说深度Q-learning可以玩atari游戏，我们将要在这里讨论和实现这些更复杂和强大的Q-learning算法。 Tabular Approaches for Tabular Environment(表格算法) ​ The rules of the FrozenLake environment 在本教程中，我们将要尝试使用OpenAI gym解决FrozenLake问题。OpenAI gym提供了一个简单的环境，使初学者可以在他们提供一系列游戏中尝试他们的方法。比如FrozenLake，该游戏环境包括一个4*4的网络格子，每个格子可以是起始块，目标块、冻结块或者危险块。我们的目标是让Agent学习从开始块到目标快而不陷入危险块。]]></content>
+      <categories>
+        <category>Reinforcement Learning</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Reinforcement Learning</tag>
+        <tag>Tensorflow</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[日记]]></title>
