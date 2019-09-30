@@ -152,7 +152,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-1.jpeg?raw=true">
 <meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-2.png?raw=true">
-<meta property="og:updated_time" content="2019-09-30T09:36:20.643Z">
+<meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-3.png?raw=true">
+<meta property="og:image" content="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-4.png?raw=true">
+<meta property="og:updated_time" content="2019-09-30T09:51:52.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于tensorflow的最简单的强化学习入门 part0 - Q学习和神经网络">
 <meta name="twitter:description" content="本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，原文链接。   We’ll be learning how to solve the OpenAI FrozenLake environment. O">
@@ -503,7 +505,9 @@
 <p>Some statistics on network performance</p>
 <p>We can see that the network beings to consistly reach the goal around the 750 episode mark.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(rList)</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-3.png?raw=true" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(jList)</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/kundongmo/kundongmo.github.io/blob/master/images/RL-0-4.png?raw=true" alt=""></p>
 <p>虽然网络学会了解决冰湖问题，但是结果表明它似乎比如Q表方法那么高效。即虽然神经网络在Q-Learning问题上提供了更高的灵活性，但它也牺牲了一定的稳定性。还有很多可能的对我们的简单Q网络进行扩展的办法，这些扩展可以让NN获得更好的性能并实现更稳定的学习过程。两种需要提到的特别技巧分别是<strong>经验重放（Experience Replay）和冰冻目标网络（Freezing Target Networks）</strong>。这些改进方式或者其它的一些技巧都是让DQN可以玩Atari游戏的关键所在，并且我们也将在后面探索这些相关知识。对于有关Q-Learning的更多理论，可以看Tambet Matiisen的<a href="http://neuro.cs.ut.ee/demystifying-deep-reinforcement-learning/" target="_blank" rel="noopener">这篇博文</a>，希望本教程可以帮助对实现简单Q-Learning算法的人们一些帮助！</p>
 
       
