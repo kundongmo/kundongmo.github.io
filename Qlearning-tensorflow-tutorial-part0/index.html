@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>Qlearning-tutorial-part0 | 莫坤东的博客</title>
+  <meta name="keywords" content>
+  <meta name="description" content="Qlearning-tutorial-part0 | 莫坤东的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="google-site-verification: googlea31bfe60691413ce.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="莫坤东的博客">
+<meta property="og:url" content="https://mokundong.cn/googlea31bfe60691413ce.html">
+<meta property="og:site_name" content="莫坤东的博客">
+<meta property="og:description" content="google-site-verification: googlea31bfe60691413ce.html">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-21T11:34:20.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="莫坤东的博客">
+<meta name="twitter:description" content="google-site-verification: googlea31bfe60691413ce.html">
+
+
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/kundongmo/cdn@1.1/img/avatarmo.gif">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/school-book.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="https://cdn.jsdelivr.net/gh/kundongmo/cdn@1.1/img/avatarmo.gif" />
+</a>
+<div class="author">
+    <span>小白</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/mokundong" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:mokundong@sina.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=664804588&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(5)</small></div></li>
+    
+        
+            
+            <li><div data-rel="日记杂谈">日记杂谈<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="pythonbook">pythonbook<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="keras">keras<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="flask">flask<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="强化学习"><i class="fold iconfont icon-right"></i>强化学习<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="tutorial">tutorial<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  site_url"  href="/about">关于</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://zbj.dev/">zbj-dev</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="日记杂谈 "
+           href="/chat-Summary-2018/"
+           data-tag=""
+           data-author="小白" >
+            <span class="post-title" title="Summary-2018-12">Summary-2018-12</span>
+            <span class="post-date" title="2018-12-30 17:44:00">2018/12/30</span>
+        </a>
+        
+        <a  class="资料分享 pythonbook "
+           href="/share-python-books/"
+           data-tag=""
+           data-author="mokundong" >
+            <span class="post-title" title="share-python-books">share-python-books</span>
+            <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
+        </a>
+        
+        <a  class="python keras "
+           href="/python-keras-test/"
+           data-tag=""
+           data-author="mkd" >
+            <span class="post-title" title="keras-test">keras-test</span>
+            <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
+        </a>
+        
+        <a  class="python flask "
+           href="/python-flask-deeplearing-service/"
+           data-tag=""
+           data-author="小白" >
+            <span class="post-title" title="flask部署深度学习模型">flask部署深度学习模型</span>
+            <span class="post-date" title="2019-10-25 16:44:39">2019/10/25</span>
+        </a>
+        
+        <a  class="强化学习 tutorial "
+           href="/Qlearning-tensorflow-tutorial-part0/"
+           data-tag=""
+           data-author="mokundong" >
+            <span class="post-title" title="Qlearning-tutorial-part0">Qlearning-tutorial-part0</span>
+            <span class="post-date" title="2019-10-25 21:56:48">2019/10/25</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Qlearning-tensorflow-tutorial-part0" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Qlearning-tutorial-part0</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a href="javascript:">mokundong</a></span>
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="强化学习">强化学习</a>/
+            
+                <a href="javascript:" data-rel="tutorial">tutorial</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-10-25 22:37:25'>2019-10-25 21:56</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>> 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，<a href="https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0" target="_blank" rel="noopener">原文链接</a>。 </p>
+<p><img src="https://raw.githubusercontent.com/kundongmo/picgo/master/mokundong.cn/20191013235831-RL-0-1.jpeg" alt></p>
+<p>We’ll be learning how to solve the OpenAI FrozenLake environment. Our version is a little less photo-realistic.</p>
+<p>在本强化学习系列教程中，我们将要探讨一系列称为Q-Learning的增强学习算法。与接下来的三章(Part1-3)介绍的基于策略(policy-base)的增强学习算法有所不同。</p>
+<p>我们将从实现一个简单查找表算法开始，然后展示如何使用Tensorflow来实现等效的神经网络。考虑到上述安排，我们需要回顾基础知识，所以将这一篇视为本系列的第0部分。希望通过这个系列的教程，我们在理解Q-learning之后，能够结合policy gradient和Q-learning方法构建更好的增强学习网络。（如果你对策略网络更感兴趣或者你已经有一些Q-learning的经验，那么你可以从<a href="https://link.jianshu.com/?t=http://note.youdao.com/" target="_blank" rel="noopener">这里</a>开始阅读）</p>
+<p>&nbsp; </p>
+<p>策略梯度算法(policy gradient)试着学习某个函数，该函数可以直接把状态(state)映射为动作(action)的概率分布。Q-learning和策略梯度算法不一样，它试着学习在每个状态下对应的值，并且依赖该状态执行某一个动作。虽然两种方法最终都允许我们给定情况下采取特定的行动，但是实现该目的的方法是不相同的。你也许已经听说深度Q-learning可以玩atari游戏，我们将要在这里讨论和实现这些更复杂和强大的Q-learning算法。</p>
+<blockquote>
+<p> Tabular Approaches for Tabular Environment(表环境下的表方法)</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/kundongmo/picgo/master/mokundong.cn/20191013235940-RL-0-2.png" alt> </p>
+<p>​                                              The rules of the FrozenLake environment</p>
+<p>在本教程中，我们将要尝试使用<a href="https://gym.openai.com/" target="_blank" rel="noopener">OpenAI gym</a>解决<a href="https://gym.openai.com/envs/FrozenLake-v0" target="_blank" rel="noopener">FrozenLake</a>问题。OpenAI gym提供了一个简单的环境，使初学者可以在他们提供一系列游戏中尝试他们的方法。比如<a href="https://gym.openai.com/envs/FrozenLake-v0" target="_blank" rel="noopener">FrozenLake</a>，该游戏环境包括一个4*4的网络格子，每个格子可以是起始块，目标块、冻结块或者危险块。我们的目标是让Agent学习从开始块到目标快而不陷入危险块。在任意时刻，Agent能够任意选择上下左右方向，偶尔也会跳到并非Agent选择的方向。因此，不是每一步都能达到目标快，但是学习避免危险达到目标仍然是可行的。每一步除了达到目标奖励为1以外，其他奖励都是0。因此，需要学习一种长期奖励的算法，这就是Q-Learning学习的要诀。</p>
+<p>在最简单的实现中，Q-Learning是环境中每种状态（行）和动作（列）的表。在表格的每个单元格中，我们学习一个值，该值表示在给定状态下执行给定操作的效果如何。对于<a href="https://gym.openai.com/envs/FrozenLake-v0" target="_blank" rel="noopener">FrozenLake</a>环境，我们有16个可能的状态（每个块一个）和4个可能的动作（四个运动方向），从而为我们提供了一个16x4的Q值表。我们首先将表格初始化为统一的（全零），然后观察各种动作所获得的回报，然后相应地更新表格。我们使用称为<a href="https://en.wikipedia.org/wiki/Bellman_equation" target="_blank" rel="noopener">Bellman</a>方程对Q表进行更新，该方程表示给定动作的预期长期奖励等于当前动作的即时奖励与在采取的最佳未来动作的预期奖励相结合。这样，在估算如何为将来的操作更新表时，我们将重用自己的Q表！在方程式中，规则如下所示：</p>
+<script type="math/tex; mode=display">
+\mathrm{Eq} 1 . \mathrm{Q}(\mathrm{s}, \mathrm{a})=\mathrm{r}+\mathrm{\gamma}\left(\max \left(\mathrm{Q}\left(\mathrm{s}^{\prime}, \mathrm{a}^{\prime}\right)\right)\right.</script><p>这个公式的描述了一个给定状态s和行动a下的Q值等于当即获得的回报r加上一个折现因子γ乘以能够最大化的在下一状态s’采取时能获得的最大长期回报的动作a’对应的长期回报。折现因子y允许我们决定相对于当前就可以获得的回报，未来的可能回报的相对重要性。通过这种方式，Q表会慢慢开始获得更准确的任一给定状态下，采取任意动作所对应的期望未来回报值。以下是Python版的对于Q表版本的冰湖环境解决方案的完整实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">env = gym.make(<span class="string">'FrozenLake-v0'</span>)</span><br><span class="line"><span class="comment"># Implement Q-Table learning algorithm</span></span><br><span class="line"><span class="comment"># 实现Q表学习算法</span></span><br><span class="line"><span class="comment"># Initialize table with all zeros</span></span><br><span class="line"><span class="comment"># 初始化Q表为全0值</span></span><br><span class="line">Q = np.zeros([env.observation_space.n,env.action_space.n])</span><br><span class="line"><span class="comment"># Set learning parameters</span></span><br><span class="line"><span class="comment"># 设置学习参数</span></span><br><span class="line">lr = <span class="number">.8</span></span><br><span class="line">y = <span class="number">.95</span></span><br><span class="line">num_episodes = <span class="number">2000</span></span><br><span class="line"><span class="comment"># create lists to contain total rewards and steps per episode</span></span><br><span class="line"><span class="comment"># 创建列表以包含每个episode的总回报与总步数</span></span><br><span class="line">jList = []</span><br><span class="line">rList = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_episodes):</span><br><span class="line">  <span class="comment"># Reset environment and get first new observation</span></span><br><span class="line">  <span class="comment"># 初始化环境并获得第一个观察</span></span><br><span class="line">  s = env.reset()</span><br><span class="line">  rAll = <span class="number">0</span></span><br><span class="line">  d = <span class="keyword">False</span></span><br><span class="line">  j = <span class="number">0</span></span><br><span class="line">  <span class="comment"># The Q-Table learning algorithm</span></span><br><span class="line">  <span class="comment"># Q表学习算法</span></span><br><span class="line">  <span class="keyword">while</span> j &lt; <span class="number">99</span>:</span><br><span class="line">    j+=<span class="number">1</span></span><br><span class="line">    <span class="comment"># Choose an action by greedily (with noise) picking from Q table</span></span><br><span class="line">    <span class="comment"># 基于Q表贪婪地选择一个最优行动（有噪音干扰）</span></span><br><span class="line">    a = np.argmax(Q[s,:] + np.random.randn(<span class="number">1</span>,env.action_space.n)*(<span class="number">1.</span>/(i+<span class="number">1</span>)))</span><br><span class="line">    <span class="comment"># Get new state and reward from environment</span></span><br><span class="line">    <span class="comment"># 从环境中获得回报和新的状态信息</span></span><br><span class="line">    s1,r,d,_ = env.step(a)</span><br><span class="line">    <span class="comment">#Update Q-Table with new knowledge</span></span><br><span class="line">    <span class="comment"># 用新的知识更新Q表</span></span><br><span class="line">    Q[s,a] = Q[s,a] + lr*(r + y*np.max(Q[s1,:]) - Q[s,a])</span><br><span class="line">    rAll += r</span><br><span class="line">    s = s1</span><br><span class="line">    <span class="keyword">if</span> d == <span class="keyword">True</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="comment">#jList.append(j)</span></span><br><span class="line">  rList.append(rAll)</span><br><span class="line">print(<span class="string">"Score over time: "</span> + str(sum(rList)/num_episodes))</span><br><span class="line">print(<span class="string">"Final Q-Table Values"</span>)</span><br><span class="line">print(Q)</span><br></pre></td></tr></table></figure>
+<p>(感谢<a href="https://github.com/PraneetDutta" target="_blank" rel="noopener">Praneet D</a>找到了该实现方法对应的最优的超参数）</p>
+<p><strong>## Q-Learning with Neural Networks(基于神经网络的Q-Learning)</strong></p>
+<p>现在你可能认为：表格方法挺好的，但是它不能规模化（scale），不是吗？因为对一个简单的网格世界建立一个16<em>4的表是很容易的，但是在任何一个现在的游戏或真实世界环境中都有无数可能的状态。对于大多数有趣的问题，表格都无法发挥出作用。因此，我们需要一些代替性的方案来描述我们的状态，并生成对应动作的Q值：这也就是**</em>*神经网络（Neural Network，简称NN）*<em>*</em>可以大展身手的地方。NN可以作为一个动作估计器（function approximator），我们能够输入任意多的可能状态，因为所有状态都可以被编码成一个个向量，并把它们和各自对应的Q值进行对应（map）。</p>
+<p>在冰湖例子中，我们将使用一个一层的NN，它接受以one-hot形式编码的状态向量（1<em>16），并输出一个含有4个Q值的向量，每个分量对应一个动作的长期期望回报。这样一个简单的NN就像一个强化版的Q表，而网络的权重就发挥着曾经的Q表中的各个单元格的作用。关键的不同时我们可以方便简易地扩充Tensorflow网络，包括加新的层，激活函数以及不同的输出类型，而这些都是一个一般的表格无法做到的。于是，更新的方法也发生了一点变化。相比于之前直接更新表格，我们现在将使用**</em>*逆传播（backpropagation）和*<strong>*损失函数（loss function）</strong>来完成更新。我们的损失函数采取平方和损失的形式，即加总当前预测的Q值与目标值间的差值的平方，并以梯度形式在网络中传播。这种情况下，所选行动的目标Q值依然采用上面提到的贝尔曼方程中的计算方法。</p>
+<script type="math/tex; mode=display">
+\mathrm{Eq2} .\mathrm{Loss}=\sum(\mathrm{Q}-{target}-\mathrm{Q})^2</script><p>以下是Tensorflow实现简单的Q-Network的完整代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Q-Network Learning</span></span><br><span class="line"><span class="comment"># Q网络学习</span></span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="comment"># Load the environment</span></span><br><span class="line"><span class="comment"># 加载环境</span></span><br><span class="line">env = gym.make(<span class="string">'FrozenLake-v0'</span>)</span><br><span class="line"><span class="comment"># Q网络方法</span></span><br><span class="line"><span class="comment"># Implementing the network itself</span></span><br><span class="line"><span class="comment"># 实现网络</span></span><br><span class="line">tf.reset_default_graph()</span><br><span class="line"><span class="comment"># These lines establish the feed-forward part of the network used to choose actions</span></span><br><span class="line"><span class="comment"># 下面的几行代码建立了网络的前馈部分，它将用于选择行动</span></span><br><span class="line"></span><br><span class="line">inputs1 = tf.placeholder(shape=[<span class="number">1</span>,<span class="number">16</span>],dtype=tf.float32)</span><br><span class="line">W = tf.Variable(tf.random_uniform([<span class="number">16</span>,<span class="number">4</span>],<span class="number">0</span>,<span class="number">0.01</span>))</span><br><span class="line">Qout = tf.matmul(inputs1,W)</span><br><span class="line">predict = tf.argmax(Qout,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Below we obtain the loss by taking the sum of squares difference between the target and prediction Q values.</span></span><br><span class="line"><span class="comment"># 下面的几行代码可以获得预测Q值与目标Q值间差值的平方和加总的损失。</span></span><br><span class="line"></span><br><span class="line">nextQ = tf.placeholder(shape=[<span class="number">1</span>,<span class="number">4</span>],dtype=tf.float32)</span><br><span class="line">loss = tf.reduce_sum(tf.square(nextQ - Qout))</span><br><span class="line">trainer = tf.train.GradientDescentOptimizer(learning_rate=<span class="number">0.1</span>)</span><br><span class="line">updateModel = trainer.minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training the network</span></span><br><span class="line"><span class="comment"># 训练网络</span></span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set learning parameters</span></span><br><span class="line"><span class="comment"># 设置学习参数</span></span><br><span class="line"></span><br><span class="line">y = <span class="number">.99</span></span><br><span class="line">e = <span class="number">0.1</span></span><br><span class="line">num_episodes = <span class="number">2000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#create lists to contain total rewards and steps per episode</span></span><br><span class="line"><span class="comment"># 创建列表以包含每个episode对应的总回报与总步数。</span></span><br><span class="line"></span><br><span class="line">jList = []</span><br><span class="line">rList = []</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  sess.run(init)</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(num_episodes):</span><br><span class="line">    <span class="comment"># Reset environment and get first new observation</span></span><br><span class="line">    <span class="comment"># 初始化环境并获得第一个观察</span></span><br><span class="line">		s = env.reset()</span><br><span class="line">		rAll = <span class="number">0</span></span><br><span class="line">		d = <span class="keyword">False</span></span><br><span class="line">		j = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="comment"># The Q-Network</span></span><br><span class="line">		<span class="comment"># Q网络</span></span><br><span class="line">		<span class="keyword">while</span> j &lt; <span class="number">99</span>:</span><br><span class="line">			j+=<span class="number">1</span></span><br><span class="line">      <span class="comment">#Choose an action by greedily (with e chance of random action) from the Q-network</span></span><br><span class="line">      <span class="comment"># 基于Q网络的输出结果，贪婪地选择一个行动（有一定的概率选择随机行动）</span></span><br><span class="line">      a,allQ = sess.run([predict,Qout],feed_dict=&#123;inputs1:np.identity(<span class="number">16</span>)[s:s+<span class="number">1</span>]&#125;)</span><br><span class="line">      <span class="keyword">if</span> np.random.rand(<span class="number">1</span>) &lt; e:</span><br><span class="line">        a[<span class="number">0</span>] = env.action_space.sample()</span><br><span class="line">      <span class="comment"># Get new state and reward from environment</span></span><br><span class="line">      <span class="comment"># 从环境中获得回报以及新的状态信息</span></span><br><span class="line">      s1,r,d,_ = env.step(a[<span class="number">0</span>])</span><br><span class="line">      <span class="comment"># Obtain the Q' values by feeding the new state through our network</span></span><br><span class="line">      <span class="comment"># 通过将新的状态向量输入到网络中获得Q值。</span></span><br><span class="line">      Q1 = sess.run(Qout,feed_dict=&#123;inputs1:np.identity(<span class="number">16</span>)[s1:s1+<span class="number">1</span>]&#125;)</span><br><span class="line">      <span class="comment"># Obtain maxQ' and set our target value for chosen action.</span></span><br><span class="line">      <span class="comment"># 获得最大的Q值，并为所选行为设定目标值</span></span><br><span class="line">      maxQ1 = np.max(Q1)</span><br><span class="line">      targetQ = allQ</span><br><span class="line">      targetQ[<span class="number">0</span>,a[<span class="number">0</span>]] = r + y*maxQ1</span><br><span class="line">      <span class="comment"># Train our network using target and predicted Q values</span></span><br><span class="line">      <span class="comment"># 用目标和预测的Q值训练网络</span></span><br><span class="line">      _,W1 = sess.run([updateModel,W],feed_dict=&#123;inputs1:np.identity(<span class="number">16</span>[s:s+<span class="number">1</span>],nextQ:targetQ&#125;)</span><br><span class="line">      rAll += r</span><br><span class="line">      s = s1</span><br><span class="line">      <span class="keyword">if</span> d == <span class="keyword">True</span>:</span><br><span class="line">        <span class="comment"># Reduce chance of random action as we train the model.</span></span><br><span class="line">        <span class="comment"># 随着训练的进行，主键减少选择随机行为的概率</span></span><br><span class="line">        e = <span class="number">1.</span>/((i/<span class="number">50</span>) + <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    jList.append(j)</span><br><span class="line">    rList.append(rAll)</span><br><span class="line">print(<span class="string">"Percent of succesful episodes: "</span> + str(sum(rList)/num_episodes) + <span class="string">"%"</span>)</span><br><span class="line"><span class="comment"># Percent of succesful episodes: 0.352%</span></span><br><span class="line"><span class="comment"># 成功的episode比例：0.352%</span></span><br></pre></td></tr></table></figure>
+<p>Some statistics on network performance</p>
+<p>We can see that the network beings to consistly reach the goal around the 750 episode mark.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(rList)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/kundongmo/picgo/master/mokundong.cn/20191013235957-RL-0-3.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(jList)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/kundongmo/picgo/master/mokundong.cn/20191014000017-RL-0-4.png" alt></p>
+<p>虽然网络学会了解决冰湖问题，但是结果表明它似乎比如Q表方法那么高效。即虽然神经网络在Q-Learning问题上提供了更高的灵活性，但它也牺牲了一定的稳定性。还有很多可能的对我们的简单Q网络进行扩展的办法，这些扩展可以让NN获得更好的性能并实现更稳定的学习过程。两种需要提到的特别技巧分别是<strong><em>\</em>经验重放（Experience Replay）和冰冻目标网络（Freezing Target Networks）**</strong>。这些改进方式或者其它的一些技巧都是让DQN可以玩Atari游戏的关键所在，并且我们也将在后面探索这些相关知识。对于有关Q-Learning的更多理论，可以看Tambet Matiisen的<a href="http://neuro.cs.ut.ee/demystifying-deep-reinforcement-learning/" target="_blank" rel="noopener">这篇博文</a>，希望本教程可以帮助对实现简单Q-Learning算法的人们一些帮助！</p>
+
+      
+       
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Qlearning-tutorial-part0</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-10-25, 21:56:48</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-25, 22:37:25</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/Qlearning-tensorflow-tutorial-part0/" title="Qlearning-tutorial-part0">https://mokundong.cn/Qlearning-tensorflow-tutorial-part0/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '55b5c8a7d583434f1606',
+            clientSecret: 'b507eb265a04dea8e7074238f404d90b7aad20f3',
+            repo: 'blogtalk',
+            owner: 'kundongmo',
+            admin: ['kundongmo'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 mkd</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['@小白',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
