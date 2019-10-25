@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.0.1" rel="stylesheet">
 
-<link href="/css/hl_theme/oschina.css?v=1.0.1" rel="stylesheet">
+<link href="/css/hl_theme/school-book.css?v=1.0.1" rel="stylesheet">
 
 <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -109,11 +109,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(3)</small></div></li>
+    <li><div class="all active">全部文章<small>(2)</small></div></li>
     
         
             
-            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(3)</small></div>
+            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(2)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -121,7 +121,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="keras">keras<small>(2)</small></div>
+                        <li><div data-rel="keras">keras<small>(1)</small></div>
                             
                         </li>
                             
@@ -149,7 +149,7 @@
     </div>
     <div><a class="about  site_url"  href="/about">关于</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_posts_number" value="2">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -202,14 +202,6 @@
         </a>
         
         <a  class="python keras "
-           href="/python-keras-readlist/"
-           data-tag=""
-           data-author="mkd" >
-            <span class="post-title" title="keras-readlist">keras-readlist</span>
-            <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
-        </a>
-        
-        <a  class="python keras "
            href="/python-keras-test/"
            data-tag=""
            data-author="mkd" >
@@ -251,7 +243,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-25 16:11:55'>2018-12-12 22:16</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-25 17:25:11'>2018-12-12 22:16</time>
         
     </div>
     <div class="article-meta">
@@ -317,7 +309,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
     <p><span class="copy-title">发布时间:</span>2018-12-12, 22:16:01</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-25, 16:11:55</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-25, 17:25:11</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/python-keras-test/" title="keras-test">https://mokundong.cn/python-keras-test/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -424,20 +416,6 @@
 
         /*高亮代码块行号*/
         
-        $('pre code').each(function(){
-            var lines = $(this).text().split('\n').length - 1, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
 
         /*访问数量*/
         
@@ -461,38 +439,6 @@
 </script>
 
 <!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: ;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
 
 <!--自定义样式设置-->
 <style>

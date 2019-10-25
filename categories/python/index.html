@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.0.1" rel="stylesheet">
 
-<link href="/css/hl_theme/oschina.css?v=1.0.1" rel="stylesheet">
+<link href="/css/hl_theme/school-book.css?v=1.0.1" rel="stylesheet">
 
 <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -109,11 +109,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(3)</small></div></li>
+    <li><div class="all active">全部文章<small>(2)</small></div></li>
     
         
             
-            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(3)</small></div>
+            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(2)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -121,7 +121,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="keras">keras<small>(2)</small></div>
+                        <li><div data-rel="keras">keras<small>(1)</small></div>
                             
                         </li>
                             
@@ -149,7 +149,7 @@
     </div>
     <div><a class="about  site_url"  href="/about">关于</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_posts_number" value="2">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -202,14 +202,6 @@
         </a>
         
         <a  class="python keras "
-           href="/python-keras-readlist/"
-           data-tag=""
-           data-author="mkd" >
-            <span class="post-title" title="keras-readlist">keras-readlist</span>
-            <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
-        </a>
-        
-        <a  class="python keras "
            href="/python-keras-test/"
            data-tag=""
            data-author="mkd" >
@@ -232,7 +224,7 @@
         <article class="index">
             <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#留言板"><span class="toc-text">留言板</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文章列表"><span class="toc-text">文章列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#python-系列"><span class="toc-text">python 系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#keras"><span class="toc-text">keras</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask"><span class="toc-text">flask</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -245,7 +237,9 @@
     }
 </style>
 </div>
-            <h1 id="留言板"><a href="#留言板" class="headerlink" title="留言板"></a>留言板</h1>
+            <h1 id="文章列表"><a href="#文章列表" class="headerlink" title="文章列表"></a>文章列表</h1><h2 id="python-系列"><a href="#python-系列" class="headerlink" title="python 系列"></a>python 系列</h2><h3 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h3><p><a href="https://mokundong.cn/python-keras-test/">1、keras 测试</a></p>
+<h3 id="flask"><a href="#flask" class="headerlink" title="flask"></a>flask</h3><p><a href="https://mokundong.cn/python-flask-deeplearing-service/">1、flask 深度学习模型部署</a></p>
+
         </article>
         
         <p>
@@ -344,20 +338,6 @@
 
         /*高亮代码块行号*/
         
-        $('pre code').each(function(){
-            var lines = $(this).text().split('\n').length - 1, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
 
         /*访问数量*/
         
@@ -381,38 +361,6 @@
 </script>
 
 <!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: ;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
 
 <!--自定义样式设置-->
 <style>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-25T08:55:09.541Z</updated>
+  <updated>2019-10-25T09:25:16.251Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://mokundong.cn/python-flask-deeplearing-service/"/>
     <id>https://mokundong.cn/python-flask-deeplearing-service/</id>
     <published>2019-10-25T08:44:39.000Z</published>
-    <updated>2019-10-25T08:55:09.541Z</updated>
+    <updated>2019-10-25T09:25:16.251Z</updated>
     
     <summary type="html">
     
@@ -44,35 +44,21 @@
   </entry>
   
   <entry>
-    <title>keras-readlist</title>
-    <link href="https://mokundong.cn/python-keras-readlist/"/>
-    <id>https://mokundong.cn/python-keras-readlist/</id>
-    <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2019-10-25T08:12:19.392Z</updated>
-    
-    <summary type="html">
-    
-      hexo-sakura主题使用教程
-    
-    </summary>
-    
-      <category term="python" scheme="https://mokundong.cn/categories/python/"/>
-    
-      <category term="keras" scheme="https://mokundong.cn/categories/python/keras/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>keras-test</title>
     <link href="https://mokundong.cn/python-keras-test/"/>
     <id>https://mokundong.cn/python-keras-test/</id>
     <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2019-10-25T08:11:55.524Z</updated>
+    <updated>2019-10-25T09:25:11.073Z</updated>
     
     <summary type="html">
     
-      hexo-sakura主题使用教程
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
     
     </summary>
     
