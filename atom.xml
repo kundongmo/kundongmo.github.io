@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-25T08:12:19.392Z</updated>
+  <updated>2019-10-25T08:55:09.541Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flask部署深度学习模型</title>
+    <link href="https://mokundong.cn/python-flask-deeplearing-service/"/>
+    <id>https://mokundong.cn/python-flask-deeplearing-service/</id>
+    <published>2019-10-25T08:44:39.000Z</published>
+    <updated>2019-10-25T08:55:09.541Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt; 作为著名Python
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://mokundong.cn/categories/python/"/>
+    
+      <category term="flask" scheme="https://mokundong.cn/categories/python/flask/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>keras-readlist</title>
