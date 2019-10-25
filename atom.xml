@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;&gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
+          &lt;p&gt;&amp;gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
         
       
     
@@ -55,7 +55,10 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th
         
       
     
