@@ -18,8 +18,28 @@
   
   <entry>
     <title>tensorflow</title>
-    <link href="https://mokundong.cn/test/"/>
-    <id>https://mokundong.cn/test/</id>
+    <link href="https://mokundong.cn/python-tesnorflow-readlist/"/>
+    <id>https://mokundong.cn/python-tesnorflow-readlist/</id>
+    <published>2018-12-12T14:16:01.000Z</published>
+    <updated>2019-10-25T07:11:10.687Z</updated>
+    
+    <summary type="html">
+    
+      hexo-sakura主题使用教程
+    
+    </summary>
+    
+      <category term="python" scheme="https://mokundong.cn/categories/python/"/>
+    
+      <category term="keras" scheme="https://mokundong.cn/categories/python/keras/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow</title>
+    <link href="https://mokundong.cn/python-tesnorflow-test/"/>
+    <id>https://mokundong.cn/python-tesnorflow-test/</id>
     <published>2018-12-12T14:16:01.000Z</published>
     <updated>2019-10-25T07:11:10.687Z</updated>
     
