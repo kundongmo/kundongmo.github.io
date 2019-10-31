@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-31T07:25:06.700Z</updated>
+  <updated>2019-10-31T08:17:27.500Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>特征加权之TFIDF</title>
+    <title>特征加权之TFIDF及其改进算法TF-IWF</title>
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-10-31T07:25:06.700Z</updated>
+    <updated>2019-10-31T08:17:27.500Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,7 @@
       
         
         
-          &lt;p&gt;直观上一个文本是由文字和标点符号组成的字符串，其构成方式是：字+字符——&amp;gt;词+…+词——&amp;gt;短语+短语——&amp;gt;句、段、节、章、篇的结构。&lt;/p&gt;
-
+          &lt;h2 id=&quot;1、背景&quot;&gt;&lt;a href=&quot;#1、背景&quot; class=&quot;headerlink&quot;
         
       
     
