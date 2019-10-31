@@ -327,7 +327,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-31 20:27:04'>2019-10-31 11:44</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-31 20:33:31'>2019-10-31 11:44</time>
         
     </div>
     <div class="article-meta">
@@ -381,7 +381,7 @@
 <h2 id="2、TF-IDF"><a href="#2、TF-IDF" class="headerlink" title="2、TF-IDF"></a>2、TF-IDF</h2><p>怎么理解呢？某个词在一篇文章中反复出现有两种情况，即这个词是关键词或者常用词(可理解为停用词)。要确定这个词的最终属性则需要考虑这个词在其他文章中出现的频率，若其他文章出现频率高则可以判断为常用词，出现频率低则可以确定为该词所属文章的主题词。</p>
 <h3 id="2-1、TF"><a href="#2-1、TF" class="headerlink" title="2.1、TF"></a>2.1、TF</h3><p>TF (Trem Frequency) 表示词频，即一个词在文章中出现的次数。实际应用中不同长度的文章中指定词出现的次数可能与文档长度有正相关，因此我们需要对词频进行归一化处理，通常用次数除以文章的总词数：<br>$$<br>tf_{ij} = \frac{n_{i,j}}{\sum_{k}n_{k,j}}<br>$$<br>公式中分子$ n_{i,j}$ 表示词语$t_i$在文本$j$中的频数，分母$\sum_{k}n_{k,j}$表示文档$j$中所有词汇量总和。</p>
 <p>即是说：<br>$$<br>TF_w = \frac{给定词w在当前文章出现的次数}{当前文章中的总词量}<br>$$<br>$TF$在应用中一般是在分词的时候在线计算。</p>
-<h3 id="2-2、IDF"><a href="#2-2、IDF" class="headerlink" title="2.2、IDF"></a>2.2、IDF</h3><p>IDF(Inverse Document Frequency)表示逆文档率，定义为文件总数除以包含给定词出现的文档数。<br>$$<br>idf_{i} = log\frac{\left|D\right|}{\left|\left\{j:t_i\in d_j\right\}\right|}<br>$$<br>公式中$\left|D\right|$表示语料库$$d$$的文档总数，分母$\left|\left\{j:t_i\in d_j\right\}\right|$表示语料库$d$中包含文档$j$中词语$t_i$的文档数，实际应用中为了避免分母为$0$，因此分母一般采用$\left|1 + \left\{j:t_i\in d_j\right\}\right|$。</p>
+<h3 id="2-2、IDF"><a href="#2-2、IDF" class="headerlink" title="2.2、IDF"></a>2.2、IDF</h3><p>IDF(Inverse Document Frequency)表示逆文档率，定义为文件总数除以包含给定词出现的文档数。<br>$$<br>idf_{i} = log\frac{\left|D\right|}{\left|\left\{j:t_i\in d_j\right\}\right|}<br>$$<br>公式中$\left|D\right|$表示语料库$d$的文档总数，分母$\left|\left\{j:t_i\in d_j\right\}\right|$表示语料库$d$中包含文档$j$中词语$t_i$的文档数，实际应用中为了避免分母为$0$，因此分母一般采用$\left|1 + \left\{j:t_i\in d_j\right\}\right|$。</p>
 <p>即是说：<br>$$<br>IDF=log \frac{语料库文档总数}{包含词w的文档数}<br>$$<br>$IDF$在应用中一般是采用业务相关语料离线计算。</p>
 <h3 id="2-3、TF-IDF"><a href="#2-3、TF-IDF" class="headerlink" title="2.3、TF-IDF"></a>2.3、TF-IDF</h3><p>$TF-IDF$定义为：<br>$$<br>TF-IDF_{i,j}\rightarrow tf_{i,j} \times idf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\times log \frac{\left|D\right|}{\left|1+\left\{j:t_{i}\in{d_{j}}\right\}\right|}<br>$$<br>以上就是TF-IDF算法的全部理论。</p>
 <h3 id="2-4、实现"><a href="#2-4、实现" class="headerlink" title="2.4、实现"></a>2.4、实现</h3><p>目前很多分词框架和机器学习算法包均集成了TF-IDF算法，以下做一个简要的罗列：</p>
@@ -395,7 +395,7 @@
 <h4 id="2-4-3、笔者在项目中，一般采取的方法是："><a href="#2-4-3、笔者在项目中，一般采取的方法是：" class="headerlink" title="2.4.3、笔者在项目中，一般采取的方法是："></a>2.4.3、笔者在项目中，一般采取的方法是：</h4><p>a、首先用相关的文本训练IDF值保存文件；</p>
 <p>b、在项目中首先初始化文件到内存，保存为字典便于快速查询；</p>
 <p>c、新文档读入后实时计算TF值并查询相关IDF值计算出TF-IDF值。</p>
-<h3 id="2-5-总结"><a href="#2-5-总结" class="headerlink" title="2.5 总结"></a>2.5 总结</h3><p>本质上$IDF$是一种试图抑制噪声的加权，单纯的以为文本频率小的单词就越重要，文本频率大的单词就越无用。这对于大部分文本信息，并不是完全正确的。$IDF$ 的简单结构并不能使提取的关键词，十分有效地反映单词的重要程度和特征词的分布情况，使其无法很好地完成对权值调整的功能。尤其是在同类语料库中，这一方法有很大弊端，往往一些同类文本的关键词被掩盖。例如：语料库 $D$ 中教育类文章偏多，而文本 $j $是一篇属于教育类的文章，那么教育类相关的词语的$ IDF $值将会偏小，使提取文本关键词的召回率更低。因此才会有词语逆频率方式计算加权算法 $TF-IWF$ (Term Frequency-Inverse Word Frequency)。 </p>
+<h3 id="2-5-总结"><a href="#2-5-总结" class="headerlink" title="2.5 总结"></a>2.5 总结</h3><p>本质上$IDF$是一种试图抑制噪声的加权，单纯的以为文本频率小的单词就越重要，文本频率大的单词就越无用。这对于大部分文本信息，并不是完全正确的。$IDF$ 的简单结构并不能使提取的关键词，十分有效地反映单词的重要程度和特征词的分布情况，使其无法很好地完成对权值调整的功能。尤其是在同类语料库中，这一方法有很大弊端，往往一些同类文本的关键词被掩盖。例如：语料库 $D$ 中教育类文章偏多，而文本 $j $是一篇属于教育类的文章，那么教育类相关的词语的$ IDF $值将会偏小，使提取文本关键词的召回率更低。因此才会有词语逆频率方式计算加权算法 $TF-IWF$ (Term Frequency-Inverse Word Frequency)，关于$TF-IWF$将会在下篇文章讲解。 </p>
 <blockquote>
 <p>参考文献 <a href="http://dx.doi.org/10.12677/csa.2013.31012" target="_blank" rel="noopener">http://dx.doi.org/10.12677/csa.2013.31012</a> </p>
 </blockquote>
@@ -416,7 +416,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-31, 11:44:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-31, 20:27:04</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-31, 20:33:31</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/nlp-basic-keyword-tfidf/" title="特征加权之TFIDF">https://mokundong.cn/nlp-basic-keyword-tfidf/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
