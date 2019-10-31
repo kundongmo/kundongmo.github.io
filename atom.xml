@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-31T03:45:20.753Z</updated>
+  <updated>2019-10-31T03:48:26.321Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>nlp-tfidf_and_textrank</title>
+    <title>主题词提取之：TFIDF</title>
     <link href="https://mokundong.cn/nlp-tfidf-and-textrank/"/>
     <id>https://mokundong.cn/nlp-tfidf-and-textrank/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-10-31T03:45:20.753Z</updated>
+    <updated>2019-10-31T03:48:26.321Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
     
       <category term="nlp" scheme="https://mokundong.cn/categories/nlp/"/>
     
-      <category term="basic" scheme="https://mokundong.cn/categories/nlp/basic/"/>
+      <category term="主题词" scheme="https://mokundong.cn/categories/nlp/%E4%B8%BB%E9%A2%98%E8%AF%8D/"/>
     
     
   </entry>
