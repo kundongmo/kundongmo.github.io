@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-25T14:37:25.783Z</updated>
+  <updated>2019-10-31T03:42:47.089Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nlp-basic-tf_idf-textrank</title>
+    <link href="https://mokundong.cn/nlp-basic-tf-idf-textrank/"/>
+    <id>https://mokundong.cn/nlp-basic-tf-idf-textrank/</id>
+    <published>2019-10-31T03:42:04.000Z</published>
+    <updated>2019-10-31T03:42:47.089Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="nlp" scheme="https://mokundong.cn/categories/nlp/"/>
+    
+      <category term="basic" scheme="https://mokundong.cn/categories/nlp/basic/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Qlearning-tutorial-part0</title>
