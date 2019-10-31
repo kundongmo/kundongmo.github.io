@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>主题词提取之：TFIDF | 莫坤东的博客</title>
+  <title>特征加权之TFIDF | 莫坤东的博客</title>
   <meta name="keywords" content>
-  <meta name="description" content="主题词提取之：TFIDF | 莫坤东的博客">
+  <meta name="description" content="特征加权之TFIDF | 莫坤东的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="google-site-verification: googlea31bfe60691413ce.html">
 <meta property="og:type" content="website">
@@ -121,11 +121,27 @@
     
         
             
+            <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="pythonbook">pythonbook<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
             <li><div data-rel="nlp"><i class="fold iconfont icon-right"></i>nlp<small>(1)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="主题词">主题词<small>(1)</small></div>
+                        <li><div data-rel="主题抽取">主题抽取<small>(1)</small></div>
                             
                         </li>
                             
@@ -146,22 +162,6 @@
                         </li>
                             
                         <li><div data-rel="keras">keras<small>(1)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="pythonbook">pythonbook<small>(1)</small></div>
                             
                         </li>
                             
@@ -269,11 +269,19 @@
             <span class="post-date" title="2018-12-30 17:44:00">2018/12/30</span>
         </a>
         
-        <a  class="nlp 主题词 "
+        <a  class="资料分享 pythonbook "
+           href="/share-python-books/"
+           data-tag=""
+           data-author="mokundong" >
+            <span class="post-title" title="share-python-books">share-python-books</span>
+            <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
+        </a>
+        
+        <a  class="nlp 主题抽取 "
            href="/nlp-basic-keyword-tfidf/"
            data-tag=""
            data-author="mokundong" >
-            <span class="post-title" title="主题词提取之：TFIDF">主题词提取之：TFIDF</span>
+            <span class="post-title" title="特征加权之TFIDF">特征加权之TFIDF</span>
             <span class="post-date" title="2019-10-31 11:44:27">2019/10/31</span>
         </a>
         
@@ -291,14 +299,6 @@
            data-author="mkd" >
             <span class="post-title" title="keras-test">keras-test</span>
             <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
-        </a>
-        
-        <a  class="资料分享 pythonbook "
-           href="/share-python-books/"
-           data-tag=""
-           data-author="mokundong" >
-            <span class="post-title" title="share-python-books">share-python-books</span>
-            <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
         </a>
         
         <a  class="强化学习 tutorial "
@@ -323,7 +323,7 @@
     <div class="pjax">
         <article id="post-nlp-basic-keyword-tfidf" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">主题词提取之：TFIDF</h1>
+        <h1 class="article-title">特征加权之TFIDF</h1>
     
     <div class="article-meta">
         
@@ -335,7 +335,7 @@
             
                 <a href="javascript:" data-rel="nlp">nlp</a>/
             
-                <a href="javascript:" data-rel="主题词">主题词</a>
+                <a href="javascript:" data-rel="主题抽取">主题抽取</a>
             
         </span>
         
@@ -343,7 +343,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-31 11:48:26'>2019-10-31 11:44</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-31 15:25:06'>2019-10-31 11:44</time>
         
     </div>
     <div class="article-meta">
@@ -392,7 +392,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>直观上一个文本是由文字和标点符号组成的字符串，其构成方式是：字+字符——&gt;词+…+词——&gt;短语+短语——&gt;句、段、节、章、篇的结构。</p>
+
       
        
     </div>
@@ -405,12 +406,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>主题词提取之：TFIDF</p>
+    <p><span class="copy-title">文章标题:</span>特征加权之TFIDF</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-31, 11:44:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-31, 11:48:26</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/nlp-basic-keyword-tfidf/" title="主题词提取之：TFIDF">https://mokundong.cn/nlp-basic-keyword-tfidf/</a>
+    <p><span class="copy-title">最后更新:</span>2019-10-31, 15:25:06</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/nlp-basic-keyword-tfidf/" title="特征加权之TFIDF">https://mokundong.cn/nlp-basic-keyword-tfidf/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
