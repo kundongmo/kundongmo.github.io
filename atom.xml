@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-31T09:19:40.438Z</updated>
+  <updated>2019-10-31T09:27:47.659Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-10-31T09:19:40.438Z</updated>
+    <updated>2019-10-31T09:27:47.659Z</updated>
     
     <summary type="html">
     
@@ -55,7 +55,7 @@
       
         
         
-          &lt;p&gt;&gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
+          &lt;p&gt;&amp;gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
         
       
     
@@ -81,7 +81,10 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th
         
       
     
