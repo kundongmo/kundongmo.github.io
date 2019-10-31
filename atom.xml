@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-10-31T12:26:47.107Z</updated>
+  <updated>2019-10-31T12:27:04.343Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-10-31T12:26:47.107Z</updated>
+    <updated>2019-10-31T12:27:04.343Z</updated>
     
     <summary type="html">
     
@@ -55,7 +55,7 @@
       
         
         
-          &lt;p&gt;&gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
+          &lt;p&gt;&amp;gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
         
       
     
@@ -81,7 +81,10 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th
         
       
     
@@ -117,31 +120,6 @@
       <category term="python" scheme="https://mokundong.cn/categories/python/"/>
     
       <category term="flask" scheme="https://mokundong.cn/categories/python/flask/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Summary-2018-12</title>
-    <link href="https://mokundong.cn/chat-Summary-2018/"/>
-    <id>https://mokundong.cn/chat-Summary-2018/</id>
-    <published>2018-12-30T09:44:00.000Z</published>
-    <updated>2019-10-25T14:06:07.358Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;2018年可谓人生一大转折点，这年中结束了长达二十年的求学生涯摇身一变就要两肩扛砖，为一口吃喝而奔波。前半年忙论文忙答辩除了忙碌还是忙碌，不过心情还是极好的，毕竟对面长达三年身心折磨的结束还是很期待的；忘记与学校分手的第几天起，喜欢一个人…啊，呸，
-        
-      
-    
-    </summary>
-    
-      <category term="日记杂谈" scheme="https://mokundong.cn/categories/%E6%97%A5%E8%AE%B0%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
