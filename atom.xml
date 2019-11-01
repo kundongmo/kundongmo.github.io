@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mokundong.cn/"/>
-  <updated>2019-11-01T01:26:19.997Z</updated>
+  <updated>2019-11-01T01:34:46.438Z</updated>
   <id>https://mokundong.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfiwf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfiwf/</id>
     <published>2019-10-31T13:01:33.000Z</published>
-    <updated>2019-11-01T01:26:19.997Z</updated>
+    <updated>2019-11-01T01:34:46.438Z</updated>
     
     <summary type="html">
     
@@ -47,7 +47,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-11-01T01:31:12.440Z</updated>
+    <updated>2019-11-01T01:40:20.477Z</updated>
     
     <summary type="html">
     
@@ -73,7 +73,7 @@
     <link href="https://mokundong.cn/Qlearning-tensorflow-tutorial-part0/"/>
     <id>https://mokundong.cn/Qlearning-tensorflow-tutorial-part0/</id>
     <published>2019-10-25T13:56:48.000Z</published>
-    <updated>2019-11-01T01:31:49.559Z</updated>
+    <updated>2019-11-01T01:34:25.487Z</updated>
     
     <summary type="html">
     
@@ -81,7 +81,7 @@
       
         
         
-          &lt;p&gt;&amp;gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
+          &lt;p&gt;&gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
         
       
     
@@ -99,7 +99,7 @@
     <link href="https://mokundong.cn/share-python-books/"/>
     <id>https://mokundong.cn/share-python-books/</id>
     <published>2019-10-25T09:51:46.000Z</published>
-    <updated>2019-11-01T01:31:51.227Z</updated>
+    <updated>2019-11-01T01:34:34.503Z</updated>
     
     <summary type="html">
     
@@ -107,10 +107,7 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
         
       
     
@@ -155,7 +152,7 @@
     <link href="https://mokundong.cn/python-keras-test/"/>
     <id>https://mokundong.cn/python-keras-test/</id>
     <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2019-10-25T13:53:00.285Z</updated>
+    <updated>2019-11-01T01:34:13.188Z</updated>
     
     <summary type="html">
     
