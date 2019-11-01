@@ -6,14 +6,17 @@
   <meta name="keywords" content>
   <meta name="description" content="特征加权之TFIWF | 莫坤东的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="google-site-verification: googlea31bfe60691413ce.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://mokundong.cn/categories/index.html">
+<meta property="og:title" content="莫坤东的博客">
+<meta property="og:url" content="https://mokundong.cn/googlea31bfe60691413ce.html">
 <meta property="og:site_name" content="莫坤东的博客">
+<meta property="og:description" content="google-site-verification: googlea31bfe60691413ce.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-21T11:34:20.956Z">
+<meta property="og:updated_time" content="2019-02-21T11:34:20.574Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="莫坤东的博客">
+<meta name="twitter:description" content="google-site-verification: googlea31bfe60691413ce.html">
 
 
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/kundongmo/cdn@1.1/img/avatarmo.gif">
@@ -126,6 +129,30 @@
     
         
             
+            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="flask">flask<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="keras">keras<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
             <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
                 
                     <ul class="sub hide">
@@ -137,30 +164,6 @@
                     </ul>
                 
             </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="python"><i class="fold iconfont icon-right"></i>python<small>(2)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="keras">keras<small>(1)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="flask">flask<small>(1)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-        
             
         
     
@@ -266,12 +269,12 @@
             <span class="post-date" title="2019-10-31 21:01:33">2019/10/31</span>
         </a>
         
-        <a  class="资料分享 pythonbook "
-           href="/share-python-books/"
+        <a  class="python flask "
+           href="/python-flask-deeplearing-service/"
            data-tag=""
-           data-author="mokundong" >
-            <span class="post-title" title="share-python-books">share-python-books</span>
-            <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
+           data-author="小白" >
+            <span class="post-title" title="flask部署深度学习模型">flask部署深度学习模型</span>
+            <span class="post-date" title="2019-10-25 16:44:39">2019/10/25</span>
         </a>
         
         <a  class="python keras "
@@ -282,12 +285,12 @@
             <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
         </a>
         
-        <a  class="python flask "
-           href="/python-flask-deeplearing-service/"
+        <a  class="资料分享 pythonbook "
+           href="/share-python-books/"
            data-tag=""
-           data-author="小白" >
-            <span class="post-title" title="flask部署深度学习模型">flask部署深度学习模型</span>
-            <span class="post-date" title="2019-10-25 16:44:39">2019/10/25</span>
+           data-author="mokundong" >
+            <span class="post-title" title="share-python-books">share-python-books</span>
+            <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
         </a>
         
         <a  class="强化学习 tutorial "
@@ -332,7 +335,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-01 11:37:07'>2019-10-31 21:01</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-01 13:39:37'>2019-10-31 21:01</time>
         
     </div>
     <div class="article-meta">
@@ -382,17 +385,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>在上篇<a href="https://mokundong.cn/nlp-basic-keyword-tfidf/">特征加权之TFIDF</a> 中，我们提到了IDF的固有缺点，即$IDF$ 的简单结构并不能使提取的关键词，十分有效地反映单词的重要程度和特征词的分布情况，使其无法很好地完成对权值调整的功能。尤其是在同类语料库中，这一方法有很大弊端，往往一些同类文本的关键词被掩盖。例如：语料库 $D$ 中教育类文章偏多，而文本 $j $是一篇属于教育类的文章，那么教育类相关的词语的$ IDF $值将会偏小，使提取文本关键词的召回率更低。因此我们在此提出词语逆频率方式计算加权算法 $TF-IWF$ (Term Frequency-Inverse Word Frequency)。</p>
-<h2 id="2、TF-IWF"><a href="#2、TF-IWF" class="headerlink" title="2、TF-IWF"></a>2、TF-IWF</h2><p>此处的$TF$与$TF-IDF$中意义一样，表示词频：</p>
-<script type="math/tex; mode=display">
-tf_{ij} = \frac{n_{i,j}}{\sum_{k}n_{k,j}}</script><p>上式中分子$ n_{i,j}$ 表示词语$t_i$在文本$j$中的频数，分母$\sum_{k}n_{k,j}$表示文档$j$中所有词汇量总和，即是说：</p>
-<script type="math/tex; mode=display">
-TF_w = \frac{给定词w在当前文章出现的次数}{当前文章中的总词量}</script><p><strong>不同</strong>之处在于$IWF$部分，定义为：</p>
-<script type="math/tex; mode=display">
-iwf_{i} = log\frac{\sum_{i=1}^m nt_{i}}{nt_{i}}</script><p>上式中分子 $\sum_{i=1}^m nt_{i}$ 表示语料库中所有词语的频数之和，分母 $nt_{i}$ 表示词语 $t_{i}$ 在语料库中的总频数，即：</p>
-<script type="math/tex; mode=display">
-IWF_{i}=\frac{语料库中所有词语的频数}{给定词w在语料库中出现的频数和}</script><p>因此，$TF-IWF$ 定义为：</p>
-<script type="math/tex; mode=display">
-TF-IWF_{i,j}\rightarrow tf_{i,j} \times iwf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\times log\frac{\sum_{i=1}^m nt_{i}}{nt_{i}}</script><h2 id="3、代码实现"><a href="#3、代码实现" class="headerlink" title="3、代码实现"></a>3、代码实现</h2><h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2>
+<h2 id="2、TF-IWF"><a href="#2、TF-IWF" class="headerlink" title="2、TF-IWF"></a>2、TF-IWF</h2><p>此处的$TF$与$TF-IDF$中意义一样，表示词频：<br>$$<br>tf_{ij} = \frac{n_{i,j}}{\sum_{k}n_{k,j}}<br>$$<br>上式中分子$ n_{i,j}$ 表示词语$t_i$在文本$j$中的频数，分母$\sum_{k}n_{k,j}$表示文档$j$中所有词汇量总和，即是说：</p>
+<p>$$<br>TF_w = \frac{给定词w在当前文章出现的次数}{当前文章中的总词量}<br>$$<br><strong>不同</strong>之处在于$IWF$部分，定义为：<br>$$<br>iwf_{i} = log\frac{\sum_{i=1}^m nt_{i}}{nt_{i}}<br>$$<br>上式中分子 $\sum_{i=1}^m nt_{i}$ 表示语料库中所有词语的频数之和，分母 $nt_{i}$ 表示词语 $t_{i}$ 在语料库中的总频数，即：<br>$$<br>IWF_{i}=\frac{语料库中所有词语的频数}{给定词w在语料库中出现的频数和}<br>$$</p>
+<p>因此，$TF-IWF$ 定义为：<br>$$<br>TF-IWF_{i,j}\rightarrow tf_{i,j} \times iwf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\times log\frac{\sum_{i=1}^m nt_{i}}{nt_{i}}<br>$$</p>
+<h2 id="3、代码实现"><a href="#3、代码实现" class="headerlink" title="3、代码实现"></a>3、代码实现</h2><h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>这种加权方法降低了语料库中同类型文本对词语权重的影响，更加精确地表达了这个词语在待 查文档中的重要程度。在传统方法 $TF-IDF$ 所求的权值一般很小接近 $0$，精确度也不是很高，公式 $TF-IWF$ 的计算结果刚好能解决最后权值过小的问题。</p>
+
       
        
     </div>
@@ -409,7 +406,7 @@ TF-IWF_{i,j}\rightarrow tf_{i,j} \times iwf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-31, 21:01:33</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-01, 11:37:07</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-01, 13:39:37</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/nlp-basic-keyword-tfiwf/" title="特征加权之TFIWF">https://mokundong.cn/nlp-basic-keyword-tfiwf/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
