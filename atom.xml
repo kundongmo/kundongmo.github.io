@@ -47,7 +47,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-11-03T04:02:49.091Z</updated>
+    <updated>2019-11-03T04:12:49.722Z</updated>
     
     <summary type="html">
     
@@ -81,7 +81,10 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th
         
       
     
