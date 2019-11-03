@@ -363,160 +363,160 @@
 <p>异步和多线程有什么区别？其实，异步是目的，而多线程是实现这个目的的方法。异步是说，A发起一个操作后（一般都是比较耗时的操作，如果不耗时的操作就没有必要异步了），可以继续自顾自的处理它自己的事儿，不用干等着这个耗时操作返回。<br>实现异步可以采用多线程技术或则交给另外的进程来处理,详解常见<a href="https://www.cnblogs.com/dream844/archive/2012/06/12/2546083.html" target="_blank" rel="noopener">这里</a>。</p>
 </blockquote>
 <h2 id="二、实现方法"><a href="#二、实现方法" class="headerlink" title="二、实现方法"></a>二、实现方法</h2><ul>
-<li><p>Flask启动自带方法</p>
-</li>
+<li>Flask启动自带方法</li>
 <li><p>采用gunicorn部署</p>
 <h3 id="1、Flask中自带方法实现"><a href="#1、Flask中自带方法实现" class="headerlink" title="1、Flask中自带方法实现"></a>1、Flask中自带方法实现</h3><blockquote>
 <p>run.py  </p>
 </blockquote>
 </li>
 </ul>
-<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
-<span class="comment"># -*- coding: utf-8 -*-  </span>
-<span class="comment"># @Time    : 2018-12-01 16:37  </span>
-<span class="comment"># @Author  : mokundong  </span>
-<span class="keyword">from</span> flask <span class="keyword">import</span> Flask  
-<span class="keyword">import</span> socket  
-<span class="keyword">from</span> time <span class="keyword">import</span> sleep  
+<pre><code class="lang-Python">#!/usr/bin/env python  
+# -*- coding: utf-8 -*-  
+# @Time    : 2018-12-01 16:37  
+# @Author  : mokundong  
+from flask import Flask  
+import socket  
+from time import sleep  
 
 myhost = socket.gethostbyname(socket.gethostname())  
 app = Flask(__name__)  
 
-<span class="meta">@app.route('/job1')  </span>
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>  
-    print(<span class="string">"Task #1 started!"</span>)  
-    sleep(<span class="number">10</span>)  
-    print(<span class="string">"Task #1 is done!"</span>)  
+@app.route(&#39;/job1&#39;)  
+def some_long_task1():  
+    print(&quot;Task #1 started!&quot;)  
+    sleep(10)  
+    print(&quot;Task #1 is done!&quot;)  
 
-<span class="meta">@app.route('/job2')  </span>
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>  
-    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
-    sleep(<span class="number">5</span>)  
-    print(<span class="string">"Task #2 is done!"</span>)  
+@app.route(&#39;/job2&#39;)  
+def some_long_task2(arg1, arg2):  
+    print(&quot;Task #2 started with args: %s %s!&quot; % (arg1, arg2))
+    sleep(5)  
+    print(&quot;Task #2 is done!&quot;)  
 
-<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  
-    app.run(host=myhost,port=<span class="number">5000</span>,threaded=<span class="keyword">True</span>)  </code></pre>
+if __name__ == &#39;__main__&#39;:  
+    app.run(host=myhost,port=5000,threaded=True)
+</code></pre>
 <p><code>app.run(host=xxx,port=xx,threaded=True)</code><br>中threaded开启后则不需要等队列。 </p>
 <h3 id="2、gunicorn部署"><a href="#2、gunicorn部署" class="headerlink" title="2、gunicorn部署"></a>2、gunicorn部署</h3><blockquote>
 <p>Gunicorn 是一个高效的Python WSGI Server,通常用它来运行 wsgi application 或者 wsgi framework(如Django,Paster,Flask),地位相当于Java中的Tomcat。gunicorn 会启动一组 worker进程，所有worker进程公用一组listener，在每个worker中为每个listener建立一个wsgi server。每当有HTTP链接到来时，wsgi server创建一个协程来处理该链接，协程处理该链接的时候，先初始化WSGI环境，然后调用用户提供的app对象去处理HTTP请求。<br>关于gunicorn的详细说明，可以参考<a href="https://gunicorn.org/" target="_blank" rel="noopener">这里</a>。  </p>
-</blockquote>
-<blockquote>
 <p>使用命令行启动gunicorn有两种方式获取配置项，一种是在命令行配置，一种是在配置文件中获取。 </p>
-</blockquote>
-<blockquote>
 <p>run.py  </p>
 </blockquote>
-<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
-<span class="comment"># -*- coding: utf-8 -*-  </span>
-<span class="comment"># @Time    : 2018-12-01 17:00  </span>
-<span class="comment"># @Author  : mokundong  </span>
-<span class="keyword">from</span> flask <span class="keyword">import</span> Flask  
-<span class="keyword">from</span> time <span class="keyword">import</span> sleep  
+<pre><code class="lang-Python">#!/usr/bin/env python  
+# -*- coding: utf-8 -*-  
+# @Time    : 2018-12-01 17:00  
+# @Author  : mokundong  
+from flask import Flask  
+from time import sleep  
 
 app = Flask(__name__)  
 
-<span class="meta">@app.route('/job1')  </span>
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>  
-    print(<span class="string">"Task #1 started!"</span>)  
-    sleep(<span class="number">10</span>)  
-    print(<span class="string">"Task #1 is done!"</span>)  
+@app.route(&#39;/job1&#39;)  
+def some_long_task1():  
+    print(&quot;Task #1 started!&quot;)  
+    sleep(10)  
+    print(&quot;Task #1 is done!&quot;)  
 
-<span class="meta">@app.route('/job2')  </span>
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>  
-    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
-    sleep(<span class="number">5</span>)  
-    print(<span class="string">"Task #2 is done!"</span>)  
+@app.route(&#39;/job2&#39;)  
+def some_long_task2(arg1, arg2):  
+    print(&quot;Task #2 started with args: %s %s!&quot; % (arg1, arg2))
+    sleep(5)  
+    print(&quot;Task #2 is done!&quot;)  
 
-<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  
-    app.run()  </code></pre>
-<h4 id="命令行配置"><a href="#命令行配置" class="headerlink" title="命令行配置"></a>命令行配置</h4><pre><code class="bash">gunicorn --workers=4 --<span class="built_in">bind</span>=127.0.0.1:8000 run:app</code></pre>
+if __name__ == &#39;__main__&#39;:  
+    app.run()
+</code></pre>
+<h4 id="命令行配置"><a href="#命令行配置" class="headerlink" title="命令行配置"></a>命令行配置</h4><pre><code class="lang-bash">gunicorn --workers=4 --bind=127.0.0.1:8000 run:app
+</code></pre>
 <p>更多配置见官网  </p>
 <h4 id="配置文件获取配置"><a href="#配置文件获取配置" class="headerlink" title="配置文件获取配置"></a>配置文件获取配置</h4><blockquote>
 <p>gunicorn_config.py  </p>
 </blockquote>
-<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
-<span class="comment"># -*- coding: utf-8 -*-  </span>
-<span class="comment"># @Time    : 2018-12-01 17:10  </span>
-<span class="comment"># @Author  : mokundong  </span>
-<span class="keyword">import</span> os
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> multiprocessing
-<span class="keyword">import</span> gevent.monkey
+<pre><code class="lang-Python">#!/usr/bin/env python  
+# -*- coding: utf-8 -*-  
+# @Time    : 2018-12-01 17:10  
+# @Author  : mokundong  
+import os
+import socket
+import multiprocessing
+import gevent.monkey
 
 gevent.monkey.patch_all()
 myhost = socket.gethostbyname(socket.gethostname())  
 
-debug = <span class="keyword">False</span>
-loglevel = <span class="string">'info'</span>
+debug = False
+loglevel = &#39;info&#39;
 hosts = get_host_ip()
-bind = hosts+<span class="string">":5000"</span>
-timeout = <span class="number">30</span>      <span class="comment">#超时</span>
+bind = hosts+&quot;:5000&quot;
+timeout = 30      #超时
 
-pidfile = <span class="string">"log/gunicorn.pid"</span>
-accesslog = <span class="string">"log/access.log"</span>
-errorlog = <span class="string">"log/debug.log"</span>
+pidfile = &quot;log/gunicorn.pid&quot;
+accesslog = &quot;log/access.log&quot;
+errorlog = &quot;log/debug.log&quot;
 
-daemon = <span class="keyword">True</span> <span class="comment">#意味着开启后台运行，默认为False</span>
-workers = <span class="number">4</span> <span class="comment"># 启动的进程数</span>
-threads = <span class="number">2</span> <span class="comment">#指定每个进程开启的线程数</span>
-worker_class = <span class="string">'gevent'</span> <span class="comment">#默认为sync模式，也可使用gevent模式。</span>
-x_forwarded_for_header = <span class="string">'X-FORWARDED-FOR'</span></code></pre>
+daemon = True #意味着开启后台运行，默认为False
+workers = 4 # 启动的进程数
+threads = 2 #指定每个进程开启的线程数
+worker_class = &#39;gevent&#39; #默认为sync模式，也可使用gevent模式。
+x_forwarded_for_header = &#39;X-FORWARDED-FOR&#39;
+</code></pre>
 <blockquote>
 <p>启动命令如下 </p>
+<pre><code class="lang-bash">gunicorn -c gunicorn_config.py run:app
+</code></pre>
 </blockquote>
-<pre><code class="bash">gunicorn -c gunicorn_config.py run:app</code></pre>
 <h2 id="三、补充"><a href="#三、补充" class="headerlink" title="三、补充"></a>三、补充</h2><h3 id="1、关于线程的补充"><a href="#1、关于线程的补充" class="headerlink" title="1、关于线程的补充"></a>1、关于线程的补充</h3><blockquote>
 <p>在工作中我还遇到一种情况，当一个请求过来后，我需要两种回应，一个是及时返回app运行结果，第二个响应是保存数据到日志或者数据库。往往我们在写数据的过程中会花销一定的时间，导致结果返回会有所延迟，因此我们需要用两个线程处理这两个任务，那么我们如下处理。</p>
-</blockquote>
-<blockquote>
 <p>run.py  </p>
 </blockquote>
-<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
-<span class="comment"># -*- coding: utf-8 -*-  </span>
-<span class="comment"># @Time    : 2018-12-01 17:20  </span>
-<span class="comment"># @Author  : mokundong</span>
-<span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request
-<span class="keyword">from</span> time <span class="keyword">import</span> sleep
-<span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor
-executor = ThreadPoolExecutor(<span class="number">2</span>)
+<pre><code class="lang-Python">#!/usr/bin/env python  
+# -*- coding: utf-8 -*-  
+# @Time    : 2018-12-01 17:20  
+# @Author  : mokundong
+from flask import Flask,request
+from time import sleep
+from concurrent.futures import ThreadPoolExecutor
+executor = ThreadPoolExecutor(2)
 app = Flask(__name__)
 
-<span class="meta">@app.route('/job')</span>
-<span class="function"><span class="keyword">def</span> <span class="title">run_jobs</span><span class="params">()</span>:</span>
+@app.route(&#39;/job&#39;)
+def run_jobs():
     executor.submit(some_long_task1)
-    executor.submit(some_long_task2, <span class="string">'hello'</span>, <span class="number">123</span>)
-    <span class="keyword">return</span> <span class="string">'Two jobs was launched in background!'</span>
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task1</span><span class="params">()</span>:</span>
-    print(<span class="string">"Task #1 started!"</span>)
-    sleep(<span class="number">10</span>)
-    print(<span class="string">"Task #1 is done!"</span>)
+    executor.submit(some_long_task2, &#39;hello&#39;, 123)
+    return &#39;Two jobs was launched in background!&#39;
+def some_long_task1():
+    print(&quot;Task #1 started!&quot;)
+    sleep(10)
+    print(&quot;Task #1 is done!&quot;)
 
-<span class="function"><span class="keyword">def</span> <span class="title">some_long_task2</span><span class="params">(arg1, arg2)</span>:</span>
-    print(<span class="string">"Task #2 started with args: %s %s!"</span> % (arg1, arg2))
-    sleep(<span class="number">5</span>)
-    print(<span class="string">"Task #2 is done!"</span>)
+def some_long_task2(arg1, arg2):
+    print(&quot;Task #2 started with args: %s %s!&quot; % (arg1, arg2))
+    sleep(5)
+    print(&quot;Task #2 is done!&quot;)
 
-<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
-    app.run()</code></pre>
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
 <h3 id="2、关于获取IP的补充"><a href="#2、关于获取IP的补充" class="headerlink" title="2、关于获取IP的补充"></a>2、关于获取IP的补充</h3><blockquote>
 <p>上述代码中通过获取<code>hostname</code>，然后再通过<code>hostname</code>反查处机器的IP。这个方法是不推荐的。因为很多的机器没有规范这个<code>hostname</code>的设置。<br>另外就是有些服务器会在 <code>/etc/hosts</code> 中添加本机的<code>hostname</code>的地址，这个做法也不是不可以，但是如果设置成了 <code>127.0.0.1</code>，那么获取出来的IP就都是这个地址了。<br>这里给出一种优雅的方式获取IP，利用 UDP 协议来实现的，生成一个UDP包，把自己的 IP 放如到 UDP 协议头中，然后从UDP包中获取本机的IP。</p>
 </blockquote>
-<pre><code class="Python"><span class="comment">#!/usr/bin/env python  </span>
-<span class="comment"># -*- coding: utf-8 -*-  </span>
-<span class="comment"># @Time    : 2018-12-01 17:30  </span>
-<span class="comment"># @Author  : mokundong</span>
-<span class="comment"># 可以封装成函数，方便 Python 的程序调用</span>
-<span class="keyword">import</span> socket
+<pre><code class="lang-Python">#!/usr/bin/env python  
+# -*- coding: utf-8 -*-  
+# @Time    : 2018-12-01 17:30  
+# @Author  : mokundong
+# 可以封装成函数，方便 Python 的程序调用
+import socket
 
-<span class="function"><span class="keyword">def</span> <span class="title">get_host_ip</span><span class="params">()</span>:</span>
-    <span class="keyword">try</span>:
+def get_host_ip():
+    try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect((<span class="string">'8.8.8.8'</span>, <span class="number">80</span>))
-        ip = s.getsockname()[<span class="number">0</span>]
-    <span class="keyword">finally</span>:
+        s.connect((&#39;8.8.8.8&#39;, 80))
+        ip = s.getsockname()[0]
+    finally:
         s.close()
 
-    <span class="keyword">return</span> ip</code></pre>
+    return ip
+</code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当然推荐使用gunicorn部署多线程，Flask自带的，emmmm，测试玩儿玩儿吧。<br>在写作过程中才发现自己知识漏洞不是一般多，共勉！</p>
 
       
