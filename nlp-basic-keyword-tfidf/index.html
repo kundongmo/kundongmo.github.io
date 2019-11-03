@@ -6,17 +6,14 @@
   <meta name="keywords" content>
   <meta name="description" content="特征加权之TFIDF | 小白的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="google-site-verification: googlea31bfe60691413ce.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="小白的博客">
-<meta property="og:url" content="https://mokundong.cn/googlea31bfe60691413ce.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://mokundong.cn/categories/index.html">
 <meta property="og:site_name" content="小白的博客">
-<meta property="og:description" content="google-site-verification: googlea31bfe60691413ce.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-21T11:34:20.574Z">
+<meta property="og:updated_time" content="2019-02-21T11:34:20.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小白的博客">
-<meta name="twitter:description" content="google-site-verification: googlea31bfe60691413ce.html">
+<meta name="twitter:title" content="categories">
 
 
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/kundongmo/cdn@1.1/img/avatarmo.gif">
@@ -109,7 +106,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(6)</small></div></li>
+    <li><div class="all active">全部文章<small>(5)</small></div></li>
     
         
             
@@ -118,6 +115,22 @@
                     <ul class="sub hide">
                         
                         <li><div data-rel="主题抽取">主题抽取<small>(2)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="pythonbook">pythonbook<small>(1)</small></div>
                             
                         </li>
                             
@@ -149,18 +162,6 @@
     
         
             
-            <li><div data-rel="资料分享"><i class="fold iconfont icon-right"></i>资料分享<small>(1)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="pythonbook">pythonbook<small>(1)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
         
     
         
@@ -168,30 +169,6 @@
         
     
         
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-            <li><div data-rel="强化学习"><i class="fold iconfont icon-right"></i>强化学习<small>(1)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="tutorial">tutorial<small>(1)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
             
         
     
@@ -209,7 +186,7 @@
     </div>
     <div><a class="about  site_url"  href="/about">关于</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="6">
+<input type="hidden" id="yelog_site_posts_number" value="5">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -269,14 +246,6 @@
             <span class="post-date" title="2019-10-31 11:44:27">2019/10/31</span>
         </a>
         
-        <a  class="python keras "
-           href="/python-keras-test/"
-           data-tag=""
-           data-author="mkd" >
-            <span class="post-title" title="keras-test">keras-test</span>
-            <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
-        </a>
-        
         <a  class="资料分享 pythonbook "
            href="/share-python-books/"
            data-tag=""
@@ -285,20 +254,20 @@
             <span class="post-date" title="2019-10-25 17:51:46">2019/10/25</span>
         </a>
         
+        <a  class="python keras "
+           href="/python-keras-test/"
+           data-tag=""
+           data-author="mkd" >
+            <span class="post-title" title="keras-test">keras-test</span>
+            <span class="post-date" title="2018-12-12 22:16:01">2018/12/12</span>
+        </a>
+        
         <a  class="python flask "
            href="/python-flask-deeplearing-service/"
            data-tag=""
            data-author="小白" >
             <span class="post-title" title="flask部署深度学习模型">flask部署深度学习模型</span>
             <span class="post-date" title="2019-10-25 16:44:39">2019/10/25</span>
-        </a>
-        
-        <a  class="强化学习 tutorial "
-           href="/Qlearning-tensorflow-tutorial-part0/"
-           data-tag=""
-           data-author="mokundong" >
-            <span class="post-title" title="Qlearning-tutorial-part0">Qlearning-tutorial-part0</span>
-            <span class="post-date" title="2019-10-25 21:56:48">2019/10/25</span>
         </a>
         
     </nav>
@@ -335,7 +304,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-02 16:23:11'>2019-10-31 11:44</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-03 12:02:49'>2019-10-31 11:44</time>
         
     </div>
     <div class="article-meta">
@@ -387,19 +356,27 @@
         <h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>TF-IDF是信息检索和文本挖掘中常用的特征加权技术，同样常用于文本主题提取和分词加权等场景。</p>
 <p>TF-IDF是一种完全基于统计的方法，其核心思想是假设字词的重要性与其在某篇文章中出现的比例成正比，与其在其他文章中出现的比例成反比。</p>
 <h2 id="2、TF-IDF"><a href="#2、TF-IDF" class="headerlink" title="2、TF-IDF"></a>2、TF-IDF</h2><p>怎么理解呢？某个词在一篇文章中反复出现有两种情况，即这个词是关键词或者常用词(可理解为停用词)。要确定这个词的最终属性则需要考虑这个词在其他文章中出现的频率，若其他文章出现频率高则可以判断为常用词，出现频率低则可以确定为该词所属文章的主题词。</p>
-<h3 id="2-1、TF"><a href="#2-1、TF" class="headerlink" title="2.1、TF"></a>2.1、TF</h3><p>TF (Trem Frequency) 表示词频，即一个词在文章中出现的次数。实际应用中不同长度的文章中指定词出现的次数可能与文档长度有正相关，因此我们需要对词频进行归一化处理，通常用次数除以文章的总词数：<br>$$<br>tf_{ij} = \frac{n_{i,j}}{\sum_{k}n_{k,j}}<br>$$<br>公式中分子$ n_{i,j}$ 表示词语$t_i$在文本$j$中的频数，分母$\sum_{k}n_{k,j}$表示文档$j$中所有词汇量总和。</p>
-<p>即是说：<br>$$<br>TF_w = \frac{给定词w在当前文章出现的次数}{当前文章中的总词量}<br>$$<br>$TF$在应用中一般是在分词的时候在线计算。</p>
-<h3 id="2-2、IDF"><a href="#2-2、IDF" class="headerlink" title="2.2、IDF"></a>2.2、IDF</h3><p>IDF(Inverse Document Frequency)表示逆文档率，定义为文件总数除以包含给定词出现的文档数。<br>$$<br>idf_{i} = log\frac{\left|D\right|}{\left|\left\{j:t_i\in d_j\right\}\right|}<br>$$<br>公式中$\left|D\right|$表示语料库$d$的文档总数，分母$\left|\left\{j:t_i\in d_j\right\}\right|$表示语料库$d$中包含文档$j$中词语$t_i$的文档数，实际应用中为了避免分母为$0$，因此分母一般采用$\left|1 + \left\{j:t_i\in d_j\right\}\right|$。</p>
-<p>即是说：<br>$$<br>IDF=log \frac{语料库文档总数}{包含词w的文档数}<br>$$<br>$IDF$在应用中一般是采用业务相关语料离线计算。</p>
-<h3 id="2-3、TF-IDF"><a href="#2-3、TF-IDF" class="headerlink" title="2.3、TF-IDF"></a>2.3、TF-IDF</h3><p>$TF-IDF$定义为：<br>$$<br>TF-IDF_{i,j}\rightarrow tf_{i,j} \times idf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\times log \frac{\left|D\right|}{\left|1+\left\{j:t_{i}\in{d_{j}}\right\}\right|}<br>$$<br>以上就是TF-IDF算法的全部理论。</p>
+<h3 id="2-1、TF"><a href="#2-1、TF" class="headerlink" title="2.1、TF"></a>2.1、TF</h3><p>TF (Trem Frequency) 表示词频，即一个词在文章中出现的次数。实际应用中不同长度的文章中指定词出现的次数可能与文档长度有正相关，因此我们需要对词频进行归一化处理，通常用次数除以文章的总词数：</p>
+<script type="math/tex; mode=display">
+tf_{ij} = \frac{n_{i,j}}{\sum_{k}n_{k,j}}</script><p>公式中分子$ n_{i,j}$ 表示词语$t_i$在文本$j$中的频数，分母$\sum_{k}n_{k,j}$表示文档$j$中所有词汇量总和。</p>
+<p>即是说：</p>
+<script type="math/tex; mode=display">
+TF_w = \frac{给定词w在当前文章出现的次数}{当前文章中的总词量}</script><p>$TF$在应用中一般是在分词的时候在线计算。</p>
+<h3 id="2-2、IDF"><a href="#2-2、IDF" class="headerlink" title="2.2、IDF"></a>2.2、IDF</h3><p>IDF(Inverse Document Frequency)表示逆文档率，定义为文件总数除以包含给定词出现的文档数。</p>
+<script type="math/tex; mode=display">
+idf_{i} = log\frac{\left|D\right|}{\left|\left\{j:t_i\in d_j\right\}\right|}</script><p>公式中$\left|D\right|$表示语料库$d$的文档总数，分母$\left|\left\{j:t_i\in d_j\right\}\right|$表示语料库$d$中包含文档$j$中词语$t_i$的文档数，实际应用中为了避免分母为$0$，因此分母一般采用$\left|1 + \left\{j:t_i\in d_j\right\}\right|$。</p>
+<p>即是说：</p>
+<script type="math/tex; mode=display">
+IDF=log \frac{语料库文档总数}{包含词w的文档数}</script><p>$IDF$在应用中一般是采用业务相关语料离线计算。</p>
+<h3 id="2-3、TF-IDF"><a href="#2-3、TF-IDF" class="headerlink" title="2.3、TF-IDF"></a>2.3、TF-IDF</h3><p>$TF-IDF$定义为：</p>
+<script type="math/tex; mode=display">
+TF-IDF_{i,j}\rightarrow tf_{i,j} \times idf_{i}=\frac{n_{i,j}}{\sum_{k}n_{k,j}}\times log \frac{\left|D\right|}{\left|1+\left\{j:t_{i}\in{d_{j}}\right\}\right|}</script><p>以上就是TF-IDF算法的全部理论。</p>
 <h3 id="2-4、实现"><a href="#2-4、实现" class="headerlink" title="2.4、实现"></a>2.4、实现</h3><p>目前很多分词框架和机器学习算法包均集成了TF-IDF算法，以下做一个简要的罗列：</p>
 <h4 id="2-4-1、结巴分词-Python"><a href="#2-4-1、结巴分词-Python" class="headerlink" title="2.4.1、结巴分词(Python)"></a>2.4.1、<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">结巴分词(Python)</a></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba.analyse</span><br><span class="line">str = <span class="string">"自然语言是人类智慧的结晶，自然语言处理是人工智能中最为困难的问题之一，而对自然语言处理的研究也是充满魅力和挑战的。"</span></span><br><span class="line">jieba.analyse.extract_tags(s, topK=<span class="number">10</span>, withWeight=<span class="keyword">True</span>, allowPOS=())</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/kundongmo/picgo/master/mokundong.cn/20191031192937.jpg" alt></p>
+<p><img src="http://image.mokundong.cn/img/20191103120213.jpg?imgslim" alt></p>
 <p>越是重要的词语所给予的权重就越大。</p>
 <h4 id="2-4-2、Scikit-learn"><a href="#2-4-2、Scikit-learn" class="headerlink" title="2.4.2、Scikit-learn"></a>2.4.2、<a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html" target="_blank" rel="noopener">Scikit-learn</a></h4><p>Scikit-learn提供了自己训练的模型的接口</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/10/30 09:48</span></span><br><span class="line"><span class="comment"># @Author  : mokundong</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfTransformer</span><br><span class="line"></span><br><span class="line">x_train = [<span class="string">'这是 第一 篇 文章 ，'</span>,</span><br><span class="line">           <span class="string">'这 篇 文章 是 第二 篇 文章 。'</span>,</span><br><span class="line">           <span class="string">'这是 第三 篇 文章 。'</span></span><br><span class="line">           ]</span><br><span class="line">x_test = [<span class="string">'这是 第几 篇 文章 ？'</span>]</span><br><span class="line">CV = CountVectorizer(max_features=<span class="number">10</span>)</span><br><span class="line">transformer = TfidfTransformer()</span><br><span class="line">tf_idf = transformer.fit_transform(CV.fit_transform(x_train))</span><br><span class="line">x_train_weight = tf_idf.toarray()</span><br><span class="line">tf_idf = transformer.transform(CV.transform(x_test))</span><br><span class="line">x_test_weight = tf_idf.toarray()</span><br><span class="line">print(x_test_weight)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">output:</span></span><br><span class="line"><span class="string">[[0.61335554 0.         0.         0.         0.78980693]]</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-4-3、笔者在项目中，一般采取的方法是："><a href="#2-4-3、笔者在项目中，一般采取的方法是：" class="headerlink" title="2.4.3、笔者在项目中，一般采取的方法是："></a>2.4.3、笔者在项目中，一般采取的方法是：</h4><p>a、首先用相关的文本训练IDF值保存文件；</p>
 <p>b、在项目中首先初始化文件到内存，保存为字典便于快速查询；</p>
 <p>c、新文档读入后实时计算TF值并查询相关IDF值计算出TF-IDF值。</p>
@@ -425,7 +402,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="小白">小白</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-31, 11:44:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-02, 16:23:11</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-03, 12:02:49</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/nlp-basic-keyword-tfidf/" title="特征加权之TFIDF">https://mokundong.cn/nlp-basic-keyword-tfidf/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。

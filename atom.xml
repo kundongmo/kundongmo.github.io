@@ -47,7 +47,7 @@
     <link href="https://mokundong.cn/nlp-basic-keyword-tfidf/"/>
     <id>https://mokundong.cn/nlp-basic-keyword-tfidf/</id>
     <published>2019-10-31T03:44:27.000Z</published>
-    <updated>2019-11-02T08:23:11.240Z</updated>
+    <updated>2019-11-03T04:02:49.091Z</updated>
     
     <summary type="html">
     
@@ -69,32 +69,6 @@
   </entry>
   
   <entry>
-    <title>Qlearning-tutorial-part0</title>
-    <link href="https://mokundong.cn/Qlearning-tensorflow-tutorial-part0/"/>
-    <id>https://mokundong.cn/Qlearning-tensorflow-tutorial-part0/</id>
-    <published>2019-10-25T13:56:48.000Z</published>
-    <updated>2019-11-01T01:34:25.487Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;gt; 本文翻译自 Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks， 作者是 Arthur Juliani，&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="强化学习" scheme="https://mokundong.cn/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="tutorial" scheme="https://mokundong.cn/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/tutorial/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>share-python-books</title>
     <link href="https://mokundong.cn/share-python-books/"/>
     <id>https://mokundong.cn/share-python-books/</id>
@@ -107,10 +81,7 @@
       
         
         
-          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th
+          &lt;h2 id=&quot;python-books&quot;&gt;&lt;a href=&quot;#python-books&quot; class=&quot;headerlink&quot; title=&quot;python books&quot;&gt;&lt;/a&gt;python books&lt;/h2&gt;&lt;div
         
       
     
